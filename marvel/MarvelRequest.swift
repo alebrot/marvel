@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class MarvelRequest{
     
@@ -37,4 +38,14 @@ class MarvelRequest{
         let params: [String: AnyObject] = [MarvelRequest.apiKey: MarvelRequest.publicKey, MarvelRequest.hashKey: hash, MarvelRequest.timestampKey:ts]
         return params
     }
+    
+    
+    static func getCharacterThumbnail(character: Character, saveLocally: Bool = true, completionHandler: (image:UIImage?) -> Void) -> UIImage? {
+        
+        let path = Config.StorageFilePaths.characterThumbnailPath(String(character.hashValue))
+        let url = character.thumbnailURI
+        return ApiRepository().getImage(url, storageFilePaths: path, saveLocally: saveLocally, completionHandler: completionHandler);
+    }
+    
+    
 }

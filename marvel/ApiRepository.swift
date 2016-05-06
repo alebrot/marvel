@@ -7,15 +7,15 @@
 //
 
 import Foundation
-
+import UIKit
 
 class ApiRepository {
-
+    
     
     
     static let dictionarySingleNameKey = "data"
     static let dictionaryMultipleNameKey = "data"
-      
+    
     
     
     func getSingleObject<T>(request: NSURLRequest, mapperType: BaseMapper<T>.Type, completionHandler: (ok:Bool, object:T?, error:NSError?) -> Void) {
@@ -53,6 +53,45 @@ class ApiRepository {
             }
             
             completionHandler(ok: ok, objects: objects, error: error)
-        }.resume()
+            }.resume()
     }
+    
+    
+    func getImage(url: NSURL?, storageFilePaths: String, saveLocally: Bool = true, completionHandler: (image:UIImage?) -> Void) -> UIImage?{
+        if(url != nil){
+            let request = NSURLRequest(URL: url!)
+            
+            var image: UIImage?
+            
+            NSURLSession.sharedSession().downloadTaskWithRequest(request, completionHandler: {
+                (url: NSURL?, response: NSURLResponse?, error: NSError?) -> Void in
+                var data: NSData? = nil
+                if error == nil && url != nil {
+                    data = NSData(contentsOfURL: url!)
+                    if (data != nil) {
+                        if (saveLocally) {
+                            //save user photo in the storage
+                            Utilities.fileStorage.saveFile(data!, path: storageFilePaths)
+                        }
+                        //create image
+                        image = UIImage(data: data!)
+                        
+                    }
+                }
+                completionHandler(image: image)
+                
+                
+                
+            }).resume()
+            
+            
+        }
+        //get iuser photo from the storage if present
+        var image: UIImage?
+        if let imageData = Utilities.fileStorage.getFile(storageFilePaths) {
+            image = UIImage(data: imageData)
+        }
+        return image
+    }
+    
 }

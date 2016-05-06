@@ -32,17 +32,21 @@ struct Config {
 
     
     
-}
-
-
-
-class CommonUtilities {
-    static func getStringFromMainBundle(key: String) -> String? {
-        if let infoPlist = NSBundle.mainBundle().infoDictionary {
-            if let apiURL = infoPlist[key] as? String {
-                return apiURL
-            }
+    struct StorageFilePaths {
+        
+        private static let characterThumbnailBasePath = StorageFilePaths.fileWithBasePath("characterThumbnails")
+        
+        static func characterThumbnailPath(name: String) -> String {
+            return StorageFilePaths.fileWithBasePath(name, basePath: StorageFilePaths.characterThumbnailBasePath)
         }
-        return nil
+        
+        static func fileWithBasePath(file: String, basePath: String = FileStorageUtilities.storageBasePath) -> String {
+            return [basePath, file].joinWithSeparator("/")
+        }
     }
+    
 }
+
+
+
+

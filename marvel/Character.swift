@@ -8,20 +8,29 @@
 
 import Foundation
 
-class Character {
+
+
+class Character: NSObject {
+    
+    private static let hashPrefix = "Character"
+
     
     var id: Int
     var name: String
-    var description: String
+    var desc: String
     var modified: NSDate
     var resourceURI: NSURL
     var thumbnailURI: NSURL
 
     
+    override var hashValue: Int {
+        return "\(Character.hashPrefix)\(id)\(name)".hashValue
+    }
+    
     init(id: Int, name: String, description: String, modified: NSDate, resourceURI: NSURL, thumbnailURI: NSURL){
         self.id = id
         self.name = name
-        self.description = description
+        self.desc = description
         self.modified = modified
         self.resourceURI = resourceURI
         self.thumbnailURI = thumbnailURI
