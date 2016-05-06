@@ -13,6 +13,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        MarvelRequest.getCharachterIndex { (ok:Bool, objects: [Character]?, error: NSError?) in
+            
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

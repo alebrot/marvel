@@ -14,6 +14,15 @@
 		4245CA061CD9EA9F007F3033 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4245CA041CD9EA9F007F3033 /* LaunchScreen.storyboard */; };
 		4245CA111CD9EA9F007F3033 /* marvelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA101CD9EA9F007F3033 /* marvelTests.swift */; };
 		4245CA1C1CD9EA9F007F3033 /* marvelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA1B1CD9EA9F007F3033 /* marvelUITests.swift */; };
+		4245CA2C1CD9EF93007F3033 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA2B1CD9EF93007F3033 /* Config.swift */; };
+		4245CA2F1CD9F4CD007F3033 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA2E1CD9F4CD007F3033 /* String.swift */; };
+		4245CA351CD9F937007F3033 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA341CD9F937007F3033 /* NSData.swift */; };
+		4245CA381CD9FBEB007F3033 /* ApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA371CD9FBEB007F3033 /* ApiRepository.swift */; };
+		4245CA3A1CD9FC26007F3033 /* BaseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA391CD9FC26007F3033 /* BaseMapper.swift */; };
+		4245CA3C1CDB56C0007F3033 /* MarvelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA3B1CDB56C0007F3033 /* MarvelRequest.swift */; };
+		4245CA3E1CDB5A30007F3033 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA3D1CDB5A30007F3033 /* NSURL.swift */; };
+		4245CA401CDB9332007F3033 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA3F1CDB9332007F3033 /* Utilities.swift */; };
+		4245CA421CDBA87A007F3033 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA411CDBA87A007F3033 /* Character.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +56,16 @@
 		4245CA171CD9EA9F007F3033 /* marvelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = marvelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4245CA1B1CD9EA9F007F3033 /* marvelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = marvelUITests.swift; sourceTree = "<group>"; };
 		4245CA1D1CD9EA9F007F3033 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4245CA2B1CD9EF93007F3033 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		4245CA2E1CD9F4CD007F3033 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		4245CA301CD9F5F6007F3033 /* marvel-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "marvel-Bridging-Header.h"; sourceTree = "<group>"; };
+		4245CA341CD9F937007F3033 /* NSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
+		4245CA371CD9FBEB007F3033 /* ApiRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRepository.swift; sourceTree = "<group>"; };
+		4245CA391CD9FC26007F3033 /* BaseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMapper.swift; sourceTree = "<group>"; };
+		4245CA3B1CDB56C0007F3033 /* MarvelRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelRequest.swift; sourceTree = "<group>"; };
+		4245CA3D1CDB5A30007F3033 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
+		4245CA3F1CDB9332007F3033 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		4245CA411CDBA87A007F3033 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +116,19 @@
 		4245C9FA1CD9EA9F007F3033 /* marvel */ = {
 			isa = PBXGroup;
 			children = (
+				4245CA361CD9FBA8007F3033 /* API */,
+				4245CA2D1CD9F4BF007F3033 /* Extension */,
+				4245CA2A1CD9ED59007F3033 /* Mappers */,
+				4245CA291CD9ED2D007F3033 /* Models */,
 				4245C9FB1CD9EA9F007F3033 /* AppDelegate.swift */,
 				4245C9FD1CD9EA9F007F3033 /* ViewController.swift */,
 				4245C9FF1CD9EA9F007F3033 /* Main.storyboard */,
 				4245CA021CD9EA9F007F3033 /* Assets.xcassets */,
 				4245CA041CD9EA9F007F3033 /* LaunchScreen.storyboard */,
 				4245CA071CD9EA9F007F3033 /* Info.plist */,
+				4245CA2B1CD9EF93007F3033 /* Config.swift */,
+				4245CA301CD9F5F6007F3033 /* marvel-Bridging-Header.h */,
+				4245CA3F1CDB9332007F3033 /* Utilities.swift */,
 			);
 			path = marvel;
 			sourceTree = "<group>";
@@ -123,6 +149,41 @@
 				4245CA1D1CD9EA9F007F3033 /* Info.plist */,
 			);
 			path = marvelUITests;
+			sourceTree = "<group>";
+		};
+		4245CA291CD9ED2D007F3033 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4245CA411CDBA87A007F3033 /* Character.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4245CA2A1CD9ED59007F3033 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				4245CA391CD9FC26007F3033 /* BaseMapper.swift */,
+			);
+			name = Mappers;
+			sourceTree = "<group>";
+		};
+		4245CA2D1CD9F4BF007F3033 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4245CA2E1CD9F4CD007F3033 /* String.swift */,
+				4245CA341CD9F937007F3033 /* NSData.swift */,
+				4245CA3D1CDB5A30007F3033 /* NSURL.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		4245CA361CD9FBA8007F3033 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4245CA371CD9FBEB007F3033 /* ApiRepository.swift */,
+				4245CA3B1CDB56C0007F3033 /* MarvelRequest.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +318,15 @@
 			files = (
 				4245C9FE1CD9EA9F007F3033 /* ViewController.swift in Sources */,
 				4245C9FC1CD9EA9F007F3033 /* AppDelegate.swift in Sources */,
+				4245CA421CDBA87A007F3033 /* Character.swift in Sources */,
+				4245CA381CD9FBEB007F3033 /* ApiRepository.swift in Sources */,
+				4245CA2F1CD9F4CD007F3033 /* String.swift in Sources */,
+				4245CA2C1CD9EF93007F3033 /* Config.swift in Sources */,
+				4245CA3A1CD9FC26007F3033 /* BaseMapper.swift in Sources */,
+				4245CA3E1CDB5A30007F3033 /* NSURL.swift in Sources */,
+				4245CA3C1CDB56C0007F3033 /* MarvelRequest.swift in Sources */,
+				4245CA401CDB9332007F3033 /* Utilities.swift in Sources */,
+				4245CA351CD9F937007F3033 /* NSData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,10 +468,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = marvel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alebrot.marvel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "marvel/marvel-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -409,10 +482,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = marvel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alebrot.marvel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "marvel/marvel-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -481,6 +556,7 @@
 				4245CA221CD9EA9F007F3033 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4245CA231CD9EA9F007F3033 /* Build configuration list for PBXNativeTarget "marvelTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +565,7 @@
 				4245CA251CD9EA9F007F3033 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4245CA261CD9EA9F007F3033 /* Build configuration list for PBXNativeTarget "marvelUITests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +574,7 @@
 				4245CA281CD9EA9F007F3033 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
