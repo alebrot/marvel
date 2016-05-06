@@ -23,6 +23,7 @@
 		4245CA3E1CDB5A30007F3033 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA3D1CDB5A30007F3033 /* NSURL.swift */; };
 		4245CA401CDB9332007F3033 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA3F1CDB9332007F3033 /* Utilities.swift */; };
 		4245CA421CDBA87A007F3033 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA411CDBA87A007F3033 /* Character.swift */; };
+		4245CA441CDC8845007F3033 /* ReusableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA431CDC8845007F3033 /* ReusableTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		4245CA3D1CDB5A30007F3033 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
 		4245CA3F1CDB9332007F3033 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		4245CA411CDBA87A007F3033 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		4245CA431CDC8845007F3033 /* ReusableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				4245CA2B1CD9EF93007F3033 /* Config.swift */,
 				4245CA301CD9F5F6007F3033 /* marvel-Bridging-Header.h */,
 				4245CA3F1CDB9332007F3033 /* Utilities.swift */,
+				4245CA431CDC8845007F3033 /* ReusableTableViewController.swift */,
 			);
 			path = marvel;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				4245CA3E1CDB5A30007F3033 /* NSURL.swift in Sources */,
 				4245CA3C1CDB56C0007F3033 /* MarvelRequest.swift in Sources */,
 				4245CA401CDB9332007F3033 /* Utilities.swift in Sources */,
+				4245CA441CDC8845007F3033 /* ReusableTableViewController.swift in Sources */,
 				4245CA351CD9F937007F3033 /* NSData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

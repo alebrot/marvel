@@ -9,22 +9,23 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    
         
-        MarvelRequest.getCharachterIndex { (ok:Bool, objects: [Character]?, error: NSError?) in
-            
-        }
-        
+    }
+    
+    @IBAction func showIndex(sender: AnyObject) {
+            self.navigationController?.pushViewController(UIStoryboard.charactersTableViewController(), animated: true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 

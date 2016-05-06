@@ -16,6 +16,22 @@ struct Config {
     }
     
     static let baseUrl = CommonUtilities.getStringFromMainBundle("BaseUrl")!
+    
+    
+    
+    
+    struct TableView {
+        
+        struct CellIdentifiers {
+            static let CharacterCell = "CharacterCell"
+        }
+        
+        static var listLoadLimit = 20;
+        
+    }
+
+    
+    
 }
 
 

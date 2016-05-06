@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        return true
+         return true
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -41,6 +41,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
 
+
+
+public extension UIStoryboard {
+    class func mainStoryboard() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()) }
+    
+    internal class func charactersTableViewController() -> CharactersTableViewController {
+        //When the storyboarding class is loaded at runtime, the [.*]Class is referenced using a string.
+        //The linker doesn't analyze code functionality, so it doesn't know that the class is used. Since no other source files references that class, the linker optimizes it out of existence when making the executable.
+        CharactersTableViewController.hash()
+        return mainStoryboard().instantiateViewControllerWithIdentifier("CharactersTableViewController") as! CharactersTableViewController
+        
+    }
+}
