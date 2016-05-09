@@ -57,7 +57,7 @@ class ApiRepository {
     }
     
     
-    func getImage(url: NSURL?, storageFilePaths: String, saveLocally: Bool = true, completionHandler: (image:UIImage?) -> Void) -> UIImage?{
+    func downloadImage(url: NSURL?, storageFilePaths: String, saveLocally: Bool = true, completionHandler: (image:UIImage?) -> Void){
         if(url != nil){
             let request = NSURLRequest(URL: url!)
             
@@ -86,12 +86,7 @@ class ApiRepository {
             
             
         }
-        //get iuser photo from the storage if present
-        var image: UIImage?
-        if let imageData = Utilities.fileStorage.getFile(storageFilePaths) {
-            image = UIImage(data: imageData)
-        }
-        return image
     }
+    
     
 }

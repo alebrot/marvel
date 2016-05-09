@@ -44,7 +44,14 @@ class MarvelRequest{
         
         let path = Config.StorageFilePaths.characterThumbnailPath(String(character.hashValue))
         let url = character.thumbnailURI
-        return ApiRepository().getImage(url, storageFilePaths: path, saveLocally: saveLocally, completionHandler: completionHandler);
+        
+        if let image = ImageUtilities.getImage(path){ //get user photo from the storage if present
+            return image
+        }else{   //download user photo
+            ApiRepository().downloadImage(url, storageFilePaths: path, saveLocally: saveLocally, completionHandler: completionHandler)
+            return nil
+        }
+        
     }
     
     

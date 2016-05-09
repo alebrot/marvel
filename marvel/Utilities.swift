@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Utilities {
     static let typeConversion = TypeConversionUtilities()
@@ -52,6 +53,17 @@ class CommonUtilities {
             }
         }
         return nil
+    }
+}
+
+
+struct ImageUtilities {
+    static func getImage(path: String)->UIImage?{
+        var image: UIImage?
+        if let imageData = Utilities.fileStorage.getFile(path) {
+            image = UIImage(data: imageData)
+        }
+        return image
     }
 }
 

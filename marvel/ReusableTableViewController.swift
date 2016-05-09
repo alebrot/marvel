@@ -190,11 +190,11 @@ class ImageReusableTableViewController<T, C: UITableViewCell>: ReusableTableView
                         cache.add(hashValue, value: image!)
                         
                         dispatch_async(dispatch_get_main_queue(), {
-                            if image != nil {
-                                imageView.image = image
-                            } else {
-                                imageView.image = self.placeholderForImageView(imageView, andObject: object, indexPath: indexPath)
+                            
+                            if self.tableView.cellForRowAtIndexPath(indexPath) != nil {
+                                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
                             }
+
                         })
 
                     }
@@ -260,11 +260,12 @@ class CharactersTableViewController: ImageReusableTableViewController<Character,
             let imageView = UIImageView()
             imageView.contentMode = UIViewContentMode.Center
             cell.backgroundView = imageView
+            cell.backgroundColor = UIColor.clearColor()            
         }
         
         super.inflateCell(cell, forObject: object, atIndexPath: indexPath)
         cell.textLabel?.text = object.name
-        cell.backgroundColor = UIColor.clearColor()
+
     }
     
     
@@ -280,10 +281,7 @@ class CharactersTableViewController: ImageReusableTableViewController<Character,
     override func image(imageView: UIImageView, object: Character, indexPath: NSIndexPath, completionHandler: (image:UIImage?) -> Void) -> UIImage? {
         
         //try to download image
-        if let localImage = MarvelRequest.getCharacterThumbnail(object, saveLocally: true, completionHandler: {
-            (image: UIImage?) -> Void in
-            completionHandler(image: image)
-        }) {
+        if let localImage = MarvelRequest.getCharacterThumbnail(object, saveLocally: true, completionHandler: completionHandler) {
             return localImage
         }
         
@@ -292,7 +290,7 @@ class CharactersTableViewController: ImageReusableTableViewController<Character,
     
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50.0
+        return 100.0
     }
     
     
