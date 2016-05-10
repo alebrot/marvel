@@ -24,6 +24,8 @@
 		4245CA401CDB9332007F3033 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA3F1CDB9332007F3033 /* Utilities.swift */; };
 		4245CA421CDBA87A007F3033 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA411CDBA87A007F3033 /* Character.swift */; };
 		4245CA441CDC8845007F3033 /* ReusableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245CA431CDC8845007F3033 /* ReusableTableViewController.swift */; };
+		427928181CE21E2900C43885 /* ImageReusableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427928171CE21E2900C43885 /* ImageReusableTableViewController.swift */; };
+		4279281A1CE21E3A00C43885 /* CharactersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427928191CE21E3A00C43885 /* CharactersTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		4245CA3F1CDB9332007F3033 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		4245CA411CDBA87A007F3033 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		4245CA431CDC8845007F3033 /* ReusableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableTableViewController.swift; sourceTree = "<group>"; };
+		427928171CE21E2900C43885 /* ImageReusableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageReusableTableViewController.swift; sourceTree = "<group>"; };
+		427928191CE21E3A00C43885 /* CharactersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +135,7 @@
 				4245CA2B1CD9EF93007F3033 /* Config.swift */,
 				4245CA301CD9F5F6007F3033 /* marvel-Bridging-Header.h */,
 				4245CA3F1CDB9332007F3033 /* Utilities.swift */,
-				4245CA431CDC8845007F3033 /* ReusableTableViewController.swift */,
+				4279281B1CE21E8700C43885 /* Controllers */,
 			);
 			path = marvel;
 			sourceTree = "<group>";
@@ -187,6 +191,24 @@
 				4245CA3B1CDB56C0007F3033 /* MarvelRequest.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		4279281B1CE21E8700C43885 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4279281C1CE21E9700C43885 /* Parent */,
+				427928191CE21E3A00C43885 /* CharactersTableViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		4279281C1CE21E9700C43885 /* Parent */ = {
+			isa = PBXGroup;
+			children = (
+				4245CA431CDC8845007F3033 /* ReusableTableViewController.swift */,
+				427928171CE21E2900C43885 /* ImageReusableTableViewController.swift */,
+			);
+			name = Parent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				427928181CE21E2900C43885 /* ImageReusableTableViewController.swift in Sources */,
 				4245C9FE1CD9EA9F007F3033 /* ViewController.swift in Sources */,
 				4245C9FC1CD9EA9F007F3033 /* AppDelegate.swift in Sources */,
 				4245CA421CDBA87A007F3033 /* Character.swift in Sources */,
@@ -327,6 +350,7 @@
 				4245CA2C1CD9EF93007F3033 /* Config.swift in Sources */,
 				4245CA3A1CD9FC26007F3033 /* BaseMapper.swift in Sources */,
 				4245CA3E1CDB5A30007F3033 /* NSURL.swift in Sources */,
+				4279281A1CE21E3A00C43885 /* CharactersTableViewController.swift in Sources */,
 				4245CA3C1CDB56C0007F3033 /* MarvelRequest.swift in Sources */,
 				4245CA401CDB9332007F3033 /* Utilities.swift in Sources */,
 				4245CA441CDC8845007F3033 /* ReusableTableViewController.swift in Sources */,

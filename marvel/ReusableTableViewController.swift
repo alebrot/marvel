@@ -9,11 +9,35 @@
 import UIKit
 
 class ReusableTableViewController<T, C:UITableViewCell>: UITableViewController {
+    
+    private let loadMoreOffset: CGFloat = 42.0
+    private var loadMoreIndicator: UIView!
+    
+    private var newDataLoadingEnabled: Bool!
+    private var isFetching: Bool!
+    private var previousScrollViewYOffset: CGFloat = 0
+    private var threshold: CGFloat!
+    private var pointNow: CGPoint = CGPointZero
+    
+    
     internal(set) var objects: [T]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.threshold = 40
+        self.isFetching = false
+        self.newDataLoadingEnabled = true
+        
+        //setup load more view
+        let loadMoreIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        loadMoreIndicator.startAnimating()
+        self.loadMoreIndicator = loadMoreIndicator
+        
+        //set up refresh control
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ReusableTableViewController.refresh), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl = refreshControl
         self.objects = [T]()
         load()
     }
@@ -36,7 +60,7 @@ class ReusableTableViewController<T, C:UITableViewCell>: UITableViewController {
     func numberOfObjectsForLoad() -> Int {
         return Config.TableView.listLoadLimit
     }
-
+    
     
     func objectAtIndexPath(indexPath: NSIndexPath) -> T {
         return objects[indexPath.row]
@@ -47,41 +71,81 @@ class ReusableTableViewController<T, C:UITableViewCell>: UITableViewController {
     }
     
     func inflateCell(cell: C, forObject object: T, atIndexPath indexPath: NSIndexPath) {
-       
+        
     }
     
     func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects:NSArray?) -> Void) {
-
+        
     }
-
-    func load() {
+    
+    //internal callback
+    func refresh() {
         
         let limit = self.numberOfObjectsForLoad()
         let offset = 0
         
         self.handleFetching(limit, offset: offset, before: {
             (Void) in
-            
-            //hide internet connection problem or no content messages
-       //     self.tableView.hideText()
-        //    self.tableView.showActivityIndicator(self.activityIndicatorPosition())
-            
+                self.refreshControl?.beginRefreshing()
             }, after: {
                 (objects: [T]?) in
                 
                 dispatch_async(dispatch_get_main_queue(), {
                     //load table with new objects
                     if(objects != nil){
-                        self.objects = objects!
-                        self.tableView.reloadData()
+                        self.loadData(objects!)
                     }
-                   // self.tableView.hideActivityIndicator()
+                    self.refreshControl?.endRefreshing()
                 })
                 
-                
-               
+        })
+        
+    }
+    
+    func load() {
+        let limit = self.numberOfObjectsForLoad()
+        let offset = 0
+        
+        self.handleFetching(limit, offset: offset, before: {
+            (Void) in
+            
+            }, after: {
+                (objects: [T]?) in
+                dispatch_async(dispatch_get_main_queue(), {
+
+                    self.loadData(objects)
+                    
+                 })
         })
     }
+    
+    //call to update table with new objects (should be executed on main thread)
+    func loadData(objects: [T]?) {
+
+            if objects != nil {
+                self.objects = objects!
+            } else {
+                self.objects = [T]()
+            }
+             self.tableView.reloadData()
+    }
+    
+    private func scrollDelegateHelper(scrollView: UIScrollView) {
+        let scrollSpeed = scrollView.contentOffset.y - previousScrollViewYOffset;
+        previousScrollViewYOffset = scrollView.contentOffset.y;
+        if abs(scrollSpeed) > threshold {
+            if (scrollView.contentOffset.y < pointNow.y) {
+                //down
+                // self.scrollViewDidAccelerateUp(false)
+                
+            } else if (scrollView.contentOffset.y > pointNow.y) {
+                // self.scrollViewDidAccelerateUp(true)
+            }
+            
+        }
+        
+    }
+    
     
     private func handleFetching(limit: Int, offset: Int, before: (Void) -> Void, after: ([T]?) -> Void) {
         before()
@@ -89,7 +153,7 @@ class ReusableTableViewController<T, C:UITableViewCell>: UITableViewController {
             (objects: NSArray?) -> Void in
             
             //enable load more
-            //self.newDataLoadingEnabled = true
+            self.newDataLoadingEnabled = true
             
             if objects != nil {
                 var newObjects = [T]()
@@ -105,193 +169,67 @@ class ReusableTableViewController<T, C:UITableViewCell>: UITableViewController {
         
     }
     
-}
-
-
-class ImageReusableTableViewController<T, C: UITableViewCell>: ReusableTableViewController<T, C> {
+    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        pointNow = scrollView.contentOffset;
+    }
     
-    var caches: [ImageCache]!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override  func scrollViewDidScroll(scrollView: UIScrollView) {
         
-        caches = [ImageCache]()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        for cache: ImageCache in self.caches{
-            cache.clear()
-        }
-    }
-    
-    
-    func getImageHashForObject(object: T, atIndexPath indexPath: NSIndexPath)->Int{
-        return 0
-    }
-    
-    func placeholderForImageView(imageView: UIImageView, andObject object: T, indexPath: NSIndexPath) -> UIImage? {
-        return nil
-    }
-    
-    func image(imageView: UIImageView, object: T, indexPath: NSIndexPath, completionHandler: (image:UIImage?) -> Void) -> UIImage? {
-        return nil
-    }
-    
-    func imageViewsForCell(cell: C, andObject object: T, indexPath: NSIndexPath) -> [UIImageView]{
-        return []
-    }
-    
-    override func inflateCell(cell: C, forObject object: T, atIndexPath indexPath: NSIndexPath) {
-        
-        super.inflateCell(cell, forObject: object, atIndexPath: indexPath)
-        
-        let imageViews = self.imageViewsForCell(cell, andObject: object, indexPath: indexPath)
-
-        if (imageViews.count>0) {
-            
-            if (self.caches.count < imageViews.count) {
-                for _ in (self.caches.count-1)...(imageViews.count-1) {
-                    self.caches.append(ImageCache())
-                }
+        if (Int(scrollView.contentOffset.y + scrollView.frame.size.height + self.loadMoreOffset) >= Int(scrollView.contentSize.height + scrollView.contentInset.bottom)) {
+            if (newDataLoadingEnabled == true && isFetching == false) {
                 
-            }
-            
-            for index in 0...(imageViews.count-1){
-                let imageView = imageViews[index]
-                imageView.tag = index
-                self.inflateImageView(imageView, forObject: object, indexPath: indexPath, withCache: self.caches[index])
-            }
-        }
-        
-        
-        
-     
-    }
-    
-    private func inflateImageView(imageView: UIImageView, forObject object: T, indexPath: NSIndexPath, withCache cache: ImageCache){
-        
-        let hashValue =  self.getImageHashForObject(object, atIndexPath: indexPath)
-        
-        if let image = cache.get(hashValue) {
-            imageView.image = image
-        } else {
-            //set placeholder and proceed
-            imageView.image = self.placeholderForImageView(imageView, andObject: object, indexPath: indexPath)
-            
-            Utilities.queues.asyncQueue.addOperationWithBlock({
-                () -> Void in
+                let limit = self.numberOfObjectsForLoad()
                 
-                if let localImage = self.image(imageView, object: object, indexPath:indexPath, completionHandler: {
-                    (image: UIImage?) -> Void in
-                    if (image != nil) {
+                let offset = self.objects.count
+                
+                self.handleFetching(limit, offset: offset, before: {
+                    (Void) in
+                        self.isFetching = true
+                        self.tableView.tableFooterView = self.loadMoreIndicator
+                        self.tableView.scrollRectToVisible(self.tableView.tableFooterView!.frame, animated: true)
+                    }, after: {
+                        (newObjects: [T]?) in
                         
-                        cache.add(hashValue, value: image!)
+                        
+                        sleep(1)
+                        
+                        var indexPaths = [NSIndexPath]()
+                        if newObjects != nil {
+                            //append new objects to array of objects
+                            for index in 0...(newObjects!.count-1){
+                                let newObject = newObjects![index]
+                                self.objects.append(newObject)
+                                indexPaths.append(NSIndexPath(forRow: (self.objects.count-1), inSection: 0))
+                            }
+                            
+                        }
                         
                         dispatch_async(dispatch_get_main_queue(), {
                             
-                            if self.tableView.cellForRowAtIndexPath(indexPath) != nil {
-                                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+                            if newObjects != nil {
+                                self.tableView.beginUpdates()
+                                self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Fade)
+                                self.tableView.endUpdates()
                             }
-
+                            
+                            if newObjects == nil || newObjects!.count == 0 {
+                                //disable fetching permanently
+                                self.newDataLoadingEnabled = false
+                            }
+                            
+                            //hide footer with loading view
+                            self.tableView.tableFooterView = nil
+                            self.isFetching = false
+                            
                         })
-
-                    }
-                }) {
-                    
-                    dispatch_async(dispatch_get_main_queue(), {
-                        imageView.image = localImage
-                    })
-                    
-                }
-                
-            })
+                        
+                        
+                })
+            }
+        } else {
+            self.scrollDelegateHelper(scrollView)
         }
         
-        
     }
-
-}
-
-class ImageCache{
-    private var cache: [Int:UIImage]
-    
-    init() {
-        self.cache = [Int: UIImage]()
-    }
-    
-    func add(hash: Int, value: UIImage) {
-        self.cache[hash] = value
-    }
-    func get(hash: Int)->UIImage? {
-        return self.cache[hash]
-    }
-    
-    func clear() {
-        self.cache.removeAll()
-    }
-}
-
-
-
-class CharactersTableViewController: ImageReusableTableViewController<Character, UITableViewCell> {
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-    }
-    
-    override func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects: NSArray?) -> Void) {
-        
-        MarvelRequest.getCharachterIndex { (ok:Bool, objects: [Character]?, error: NSError?) in
-            completionHandler(objects: objects)
-        }
-    }
-    
-    override func cellIdentifier(forIndexPath indexPath: NSIndexPath) -> String {
-        return Config.TableView.CellIdentifiers.CharacterCell
-    }
-    
-    override func inflateCell(cell: UITableViewCell, forObject object: Character, atIndexPath indexPath: NSIndexPath) {
-        
-        if(cell.backgroundView == nil){
-            let imageView = UIImageView()
-            imageView.contentMode = UIViewContentMode.Center
-            cell.backgroundView = imageView
-            cell.backgroundColor = UIColor.clearColor()            
-        }
-        
-        super.inflateCell(cell, forObject: object, atIndexPath: indexPath)
-        cell.textLabel?.text = object.name
-
-    }
-    
-    
-    override func getImageHashForObject(object: Character, atIndexPath indexPath: NSIndexPath)->Int{
-        return object.hashValue
-    }
-    
-    
-    override func imageViewsForCell(cell: UITableViewCell, andObject object: Character, indexPath: NSIndexPath) -> [UIImageView] {
-        return [cell.backgroundView as! UIImageView]
-    }
-    
-    override func image(imageView: UIImageView, object: Character, indexPath: NSIndexPath, completionHandler: (image:UIImage?) -> Void) -> UIImage? {
-        
-        //try to download image
-        if let localImage = MarvelRequest.getCharacterThumbnail(object, saveLocally: true, completionHandler: completionHandler) {
-            return localImage
-        }
-        
-        return super.image(imageView, object: object, indexPath: indexPath, completionHandler: completionHandler)
-    }
-    
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100.0
-    }
-    
     
 }

@@ -21,16 +21,22 @@ class MarvelRequest{
     private static let hashKey = "hash"
     private static let timestampKey = "ts"
     
-    
-    static func  getCharachterIndex(completionHandler: CompletionHandlerCharacters){
+    private static let limitKey = "limit"
+    private static let offsetKey = "offset"
+
+    static func  getCharachterIndex(limit: Int, offset: Int, completionHandler: CompletionHandlerCharacters){
         
-        if let url = NSURL(string:MarvelRequest.baseUrl+"characters")?.URLByAppendingQueryParams(getDeafultParams()){
+        var params = getDeafultParams()
+        params[MarvelRequest.limitKey] = limit
+        params[MarvelRequest.offsetKey] = offset
+
+        
+        if let url = NSURL(string:MarvelRequest.baseUrl+"characters")?.URLByAppendingQueryParams(params){
             let request =  NSURLRequest(URL: url)
             ApiRepository().getMultipleObjects(request, mapperType: CharacterMapper.self, completionHandler: completionHandler)
         }
         
     }
-    
     
     private static func getDeafultParams() -> [String: AnyObject]{
         let ts = Int(NSDate().timeIntervalSince1970)
@@ -38,7 +44,6 @@ class MarvelRequest{
         let params: [String: AnyObject] = [MarvelRequest.apiKey: MarvelRequest.publicKey, MarvelRequest.hashKey: hash, MarvelRequest.timestampKey:ts]
         return params
     }
-    
     
     static func getCharacterThumbnail(character: Character, saveLocally: Bool = true, completionHandler: (image:UIImage?) -> Void) -> UIImage? {
         
