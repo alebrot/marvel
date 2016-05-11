@@ -202,7 +202,7 @@ class ReusableTableViewController<T, C:UITableViewCell>: UITableViewController {
                         sleep(1)
                         
                         var indexPaths = [NSIndexPath]()
-                        if newObjects != nil {
+                        if newObjects != nil && newObjects!.count != 0 {
                             //append new objects to array of objects
                             for index in 0...(newObjects!.count-1){
                                 let newObject = newObjects![index]

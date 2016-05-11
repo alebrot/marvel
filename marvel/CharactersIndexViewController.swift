@@ -30,7 +30,11 @@ class CharactersIndexViewController: BaseContainerViewController {
         self.searchController.searchBar.delegate = charactersSearchResultsController
         self.searchController.searchBar.barStyle = UIBarStyle.Black
         self.searchController.searchBar.tintColor = UINavigationBar.appearance().tintColor
+        self.searchController.searchBar.translucent = false
 
+        
+        
+        
         super.viewDidLoad()
 
        

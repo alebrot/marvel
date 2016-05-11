@@ -23,6 +23,9 @@ class MarvelRequest{
     
     private static let limitKey = "limit"
     private static let offsetKey = "offset"
+    
+    private static let nameStartsWithKey = "nameStartsWith"
+  
 
     static func  getCharachterIndex(limit: Int, offset: Int, completionHandler: CompletionHandlerCharacters){
         
@@ -38,11 +41,17 @@ class MarvelRequest{
         
     }
     
-    private static func getDeafultParams() -> [String: AnyObject]{
-        let ts = Int(NSDate().timeIntervalSince1970)
-        let hash = "\(ts)\(MarvelRequest.privateKey)\(MarvelRequest.publicKey)".md5()
-        let params: [String: AnyObject] = [MarvelRequest.apiKey: MarvelRequest.publicKey, MarvelRequest.hashKey: hash, MarvelRequest.timestampKey:ts]
-        return params
+    static func  getCharachterSearch(text: String, limit: Int, offset: Int, completionHandler: CompletionHandlerCharacters){
+        var params = getDeafultParams()
+        params[MarvelRequest.limitKey] = limit
+        params[MarvelRequest.offsetKey] = offset
+        params[MarvelRequest.nameStartsWithKey] = text
+        
+        if let url = NSURL(string:MarvelRequest.baseUrl+"characters")?.URLByAppendingQueryParams(params){
+            let request =  NSURLRequest(URL: url)
+            ApiRepository().getMultipleObjects(request, mapperType: CharacterMapper.self, completionHandler: completionHandler)
+        }
+        
     }
     
     static func getCharacterThumbnail(character: Character, saveLocally: Bool = true, completionHandler: (image:UIImage?) -> Void) -> UIImage? {
@@ -58,6 +67,16 @@ class MarvelRequest{
         }
         
     }
+    
+    
+    private static func getDeafultParams() -> [String: AnyObject]{
+        let ts = Int(NSDate().timeIntervalSince1970)
+        let hash = "\(ts)\(MarvelRequest.privateKey)\(MarvelRequest.publicKey)".md5()
+        let params: [String: AnyObject] = [MarvelRequest.apiKey: MarvelRequest.publicKey, MarvelRequest.hashKey: hash, MarvelRequest.timestampKey:ts]
+        return params
+    }
+    
+
     
     
 }
