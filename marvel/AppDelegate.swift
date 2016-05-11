@@ -55,4 +55,32 @@ public extension UIStoryboard {
         return mainStoryboard().instantiateViewControllerWithIdentifier("CharactersTableViewController") as! CharactersTableViewController
         
     }
+    
+    internal class func charactersSearchResultsController() -> CharactersSearchResultsController {
+
+        
+        // frame: CGRect(x: ctvc.view.frame.origin.x, y: 40, width: ctvc.view.frame.size.width, height: ctvc.view.frame.size.height)
+//        
+//        let ctvc =  self.charactersTableViewController()
+//        
+//        
+//        let vc = CharactersSearchResultsController(viewController: ctvc)
+//        return vc
+        
+        
+        let continerViewController = mainStoryboard().instantiateViewControllerWithIdentifier("CharactersSearchResultsController") as! CharactersSearchResultsController
+        continerViewController.contentViewController = self.charactersTableViewController()
+        return continerViewController
+
+    }
+    
+    internal class func charactersIndexViewController() -> CharactersIndexViewController {
+                
+        let containerViewController = CharactersIndexViewController(viewController: self.charactersTableViewController())
+        return containerViewController
+        
+    }
+    
+    
+    
 }

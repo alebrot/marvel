@@ -9,16 +9,13 @@
 import UIKit
 
 class CharactersTableViewController: ImageReusableTableViewController<Character, UITableViewCell> {
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+         self.automaticallyAdjustsScrollViewInsets = false
+        
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-    }
-    
-    override func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects: NSArray?) -> Void) {
-        MarvelRequest.getCharachterIndex(limit, offset: offset) { (ok, objects, error) in
-            completionHandler(objects: objects)
-        }
+             
     }
     
     override func cellIdentifier(forIndexPath indexPath: NSIndexPath) -> String {
@@ -60,5 +57,7 @@ class CharactersTableViewController: ImageReusableTableViewController<Character,
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100.0
     }
+    
+
     
 }

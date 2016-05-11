@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showIndex(sender: AnyObject) {
-            self.navigationController?.pushViewController(UIStoryboard.charactersTableViewController(), animated: true)
+            self.navigationController?.pushViewController(UIStoryboard.charactersIndexViewController(), animated: true)
     }
 
     override func didReceiveMemoryWarning() {

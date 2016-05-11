@@ -8,7 +8,15 @@
 
 import UIKit
 
+@objc protocol ReusableTableViewControllerDelegate {
+    func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects:NSArray?) -> Void)
+}
+
+
 class ReusableTableViewController<T, C:UITableViewCell>: UITableViewController {
+    
+    var delegate: ReusableTableViewControllerDelegate?
+
     
     private let loadMoreOffset: CGFloat = 42.0
     private var loadMoreIndicator: UIView!
@@ -75,7 +83,7 @@ class ReusableTableViewController<T, C:UITableViewCell>: UITableViewController {
     }
     
     func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects:NSArray?) -> Void) {
-        
+        self.delegate?.dataWithLimit(limit, offset: offset, completionHandler: completionHandler)
     }
     
     //internal callback
