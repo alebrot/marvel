@@ -19,8 +19,6 @@ class CharactersIndexViewController: BaseContainerViewController {
             charactersTableViewController.delegate = self
         }
         
-        
-        
         let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: #selector(CharactersIndexViewController.showSearch(_:)))
         self.navigationItem.rightBarButtonItem = searchItem
         
@@ -30,8 +28,9 @@ class CharactersIndexViewController: BaseContainerViewController {
         self.searchController = UISearchController(searchResultsController: charactersSearchResultsController)
         self.searchController.hidesNavigationBarDuringPresentation = false
         self.searchController.searchBar.delegate = charactersSearchResultsController
-        
-        
+        self.searchController.searchBar.barStyle = UIBarStyle.Black
+        self.searchController.searchBar.tintColor = UINavigationBar.appearance().tintColor
+
         super.viewDidLoad()
 
        
