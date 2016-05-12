@@ -10,6 +10,11 @@
 		42114CF61CE3377800358586 /* BaseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42114CF51CE3377800358586 /* BaseContainerViewController.swift */; };
 		42114CF81CE3385500358586 /* CharactersSearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42114CF71CE3385500358586 /* CharactersSearchResultsController.swift */; };
 		42114CFB1CE34DBF00358586 /* CharactersIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42114CFA1CE34DBF00358586 /* CharactersIndexViewController.swift */; };
+		42114CFD1CE48E6F00358586 /* ReusablePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42114CFC1CE48E6F00358586 /* ReusablePageViewController.swift */; };
+		42114CFF1CE48FBC00358586 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42114CFE1CE48FBC00358586 /* ContentViewController.swift */; };
+		42114D011CE4CBC300358586 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42114D001CE4CBC300358586 /* Comic.swift */; };
+		42114D031CE4CBEA00358586 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42114D021CE4CBEA00358586 /* Resource.swift */; };
+		42114D051CE4CC0600358586 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42114D041CE4CC0600358586 /* Item.swift */; };
 		4245C9FC1CD9EA9F007F3033 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245C9FB1CD9EA9F007F3033 /* AppDelegate.swift */; };
 		4245C9FE1CD9EA9F007F3033 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245C9FD1CD9EA9F007F3033 /* ViewController.swift */; };
 		4245CA011CD9EA9F007F3033 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4245C9FF1CD9EA9F007F3033 /* Main.storyboard */; };
@@ -52,6 +57,11 @@
 		42114CF51CE3377800358586 /* BaseContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContainerViewController.swift; sourceTree = "<group>"; };
 		42114CF71CE3385500358586 /* CharactersSearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersSearchResultsController.swift; sourceTree = "<group>"; };
 		42114CFA1CE34DBF00358586 /* CharactersIndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersIndexViewController.swift; sourceTree = "<group>"; };
+		42114CFC1CE48E6F00358586 /* ReusablePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusablePageViewController.swift; sourceTree = "<group>"; };
+		42114CFE1CE48FBC00358586 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		42114D001CE4CBC300358586 /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		42114D021CE4CBEA00358586 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		42114D041CE4CC0600358586 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		4245C9F81CD9EA9E007F3033 /* marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4245C9FB1CD9EA9F007F3033 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4245C9FD1CD9EA9F007F3033 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +160,8 @@
 				4245CA301CD9F5F6007F3033 /* marvel-Bridging-Header.h */,
 				4245CA3F1CDB9332007F3033 /* Utilities.swift */,
 				4279281B1CE21E8700C43885 /* Controllers */,
+				42114CFC1CE48E6F00358586 /* ReusablePageViewController.swift */,
+				42114CFE1CE48FBC00358586 /* ContentViewController.swift */,
 			);
 			path = marvel;
 			sourceTree = "<group>";
@@ -176,6 +188,9 @@
 			isa = PBXGroup;
 			children = (
 				4245CA411CDBA87A007F3033 /* Character.swift */,
+				42114D001CE4CBC300358586 /* Comic.swift */,
+				42114D021CE4CBEA00358586 /* Resource.swift */,
+				42114D041CE4CC0600358586 /* Item.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -364,8 +379,12 @@
 				4245C9FC1CD9EA9F007F3033 /* AppDelegate.swift in Sources */,
 				4245CA421CDBA87A007F3033 /* Character.swift in Sources */,
 				4245CA381CD9FBEB007F3033 /* ApiRepository.swift in Sources */,
+				42114D051CE4CC0600358586 /* Item.swift in Sources */,
+				42114D031CE4CBEA00358586 /* Resource.swift in Sources */,
+				42114CFD1CE48E6F00358586 /* ReusablePageViewController.swift in Sources */,
 				42114CFB1CE34DBF00358586 /* CharactersIndexViewController.swift in Sources */,
 				4245CA2F1CD9F4CD007F3033 /* String.swift in Sources */,
+				42114CFF1CE48FBC00358586 /* ContentViewController.swift in Sources */,
 				4245CA2C1CD9EF93007F3033 /* Config.swift in Sources */,
 				4245CA3A1CD9FC26007F3033 /* BaseMapper.swift in Sources */,
 				4245CA3E1CDB5A30007F3033 /* NSURL.swift in Sources */,
@@ -373,6 +392,7 @@
 				4245CA3C1CDB56C0007F3033 /* MarvelRequest.swift in Sources */,
 				4245CA401CDB9332007F3033 /* Utilities.swift in Sources */,
 				4245CA441CDC8845007F3033 /* ReusableTableViewController.swift in Sources */,
+				42114D011CE4CBC300358586 /* Comic.swift in Sources */,
 				42114CF81CE3385500358586 /* CharactersSearchResultsController.swift in Sources */,
 				4245CA351CD9F937007F3033 /* NSData.swift in Sources */,
 			);

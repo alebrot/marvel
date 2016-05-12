@@ -12,6 +12,8 @@ import UIKit
 class MarvelRequest{
     
     typealias CompletionHandlerCharacters = (ok: Bool, objects: [Character]?, error: NSError?) -> Void
+    typealias CompletionHandlerComics = (ok: Bool, objects: [Comic]?, error: NSError?) -> Void
+
     
     private static let privateKey =  Config.Keys.marvelPrivate
     private static let  publicKey =  Config.Keys.marvelPublic
@@ -53,6 +55,24 @@ class MarvelRequest{
         }
         
     }
+    
+    
+    static func  getComic(url: NSURL, completionHandler: CompletionHandlerComics){
+        let request =  NSURLRequest(URL: url.URLByAppendingQueryParams(getDeafultParams()))
+        ApiRepository().getMultipleObjects(request, mapperType: ComicMapper.self, completionHandler: completionHandler)        
+    }
+    
+    
+//    static func  getResource(url: NSURL){
+//        let params = getDeafultParams()
+//
+//        let request =  NSURLRequest(URL: url.URLByAppendingQueryParams(params))
+//        ApiRepository().getSingleObject(request, mapperType: ResourceMapper.self) { (ok, object, error) in
+//            
+//        }
+//        
+//    }
+    
     
     static func getCharacterThumbnail(character: Character, saveLocally: Bool = true, completionHandler: (image:UIImage?) -> Void) -> UIImage? {
         

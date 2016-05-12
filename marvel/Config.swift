@@ -36,8 +36,14 @@ struct Config {
         
         private static let characterThumbnailBasePath = StorageFilePaths.fileWithBasePath("characterThumbnails")
         
+        private static let resourceComicsBasePath = StorageFilePaths.fileWithBasePath("resourceComics")
+        
         static func characterThumbnailPath(name: String) -> String {
             return StorageFilePaths.fileWithBasePath(name, basePath: StorageFilePaths.characterThumbnailBasePath)
+        }
+        
+        static func resourceComicsPath(name: String) -> String {
+            return StorageFilePaths.fileWithBasePath(name, basePath: StorageFilePaths.resourceComicsBasePath)
         }
         
         static func fileWithBasePath(file: String, basePath: String = FileStorageUtilities.storageBasePath) -> String {

@@ -11,12 +11,8 @@ import UIKit
 
 class ApiRepository {
     
-    
-    
     static let dictionarySingleNameKey = "data"
     static let dictionaryMultipleNameKey = "data"
-    
-    
     
     func getSingleObject<T>(request: NSURLRequest, mapperType: BaseMapper<T>.Type, completionHandler: (ok:Bool, object:T?, error:NSError?) -> Void) {
         NSURLSession.sharedSession().dataTaskWithRequest(request) {
@@ -33,10 +29,8 @@ class ApiRepository {
                 }
             }
             completionHandler(ok: ok, object: object, error: error)
-        }
+        }.resume()
     }
-    
-    
     
     func getMultipleObjects<T>(request: NSURLRequest, mapperType: BaseMapper<T>.Type, completionHandler: (ok:Bool, objects:[T]?, error:NSError?) -> Void) {
         NSURLSession.sharedSession().dataTaskWithRequest(request) {

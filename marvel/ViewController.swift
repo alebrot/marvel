@@ -12,9 +12,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    
-        
+        // Do any additional setup after loading the view, typically from a nib.        
     }
     
     @IBAction func showIndex(sender: AnyObject) {
@@ -27,5 +25,9 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func showImage(sender: AnyObject) {
+        
+        //self.navigationController?.pushViewController(UIStoryboard.reusablePageViewController(), animated: true)
+    }
 }
 

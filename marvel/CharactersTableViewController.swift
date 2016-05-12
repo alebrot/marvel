@@ -58,6 +58,12 @@ class CharactersTableViewController: ImageReusableTableViewController<Character,
         return 100.0
     }
     
+    
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let caracter = self.objects[indexPath.row]
+        self.navigationController?.pushViewController(UIStoryboard.reusablePageViewController(caracter.comics), animated: true)
+    }
 
     
 }

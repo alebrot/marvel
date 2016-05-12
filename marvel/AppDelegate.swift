@@ -70,6 +70,17 @@ public extension UIStoryboard {
         return CharactersIndexViewController(viewController: self.charactersTableViewController())
     }
     
+    internal class func reusablePageViewController(resource: Resource) -> ReusablePageViewController {
+        let vc = mainStoryboard().instantiateViewControllerWithIdentifier("ReusablePageViewController") as! ReusablePageViewController
+        vc.resource1 = resource
+        return vc
+        
+    }
+    internal class func contentViewController(item: Item) -> ContentViewController {
+        let vc = mainStoryboard().instantiateViewControllerWithIdentifier("ContentViewController") as! ContentViewController
+        vc.item = item
+        return vc
+    }   
     
     
 }

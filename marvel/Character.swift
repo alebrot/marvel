@@ -9,11 +9,25 @@
 import Foundation
 
 
+//
+//"comics": {
+//    "available": 11,
+//    "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/comics",
+//    "items": [
+
+//"resourceURI": "http://gateway.marvel.com/v1/public/comics/21366",
+//"name": "Avengers: The Initiative (2007) #14"
+
+
+
+
+
+
 
 class Character: NSObject {
     
     private static let hashPrefix = "Character"
-
+    
     
     var id: Int
     var name: String
@@ -21,19 +35,20 @@ class Character: NSObject {
     var modified: NSDate
     var resourceURI: NSURL
     var thumbnailURI: NSURL
-
+    var comics: Resource
     
     override var hashValue: Int {
         return "\(Character.hashPrefix)\(id)\(name)".hashValue
     }
     
-    init(id: Int, name: String, description: String, modified: NSDate, resourceURI: NSURL, thumbnailURI: NSURL){
+    init(id: Int, name: String, description: String, modified: NSDate, resourceURI: NSURL, thumbnailURI: NSURL, comics: Resource){
         self.id = id
         self.name = name
         self.desc = description
         self.modified = modified
         self.resourceURI = resourceURI
         self.thumbnailURI = thumbnailURI
+        self.comics = comics
     }
 }
 
@@ -51,6 +66,8 @@ class CharacterMapper: BaseMapper<Character>{
     private static let thumbnailKey = "thumbnail"
     private static let pathKey = "path"
     private static let extensionKey = "extension"
+    
+    private static let comicsKey = "comics"
     
     override class func createObjectFrom(dictionary: Dictionary<String, AnyObject> ) -> Character?{
         
@@ -70,8 +87,12 @@ class CharacterMapper: BaseMapper<Character>{
                                         if let thumbnailURI =  NSURL.fromString(thumbnailPath){
                                             let thumbnailURIWithExtension = thumbnailURI.URLByAppendingPathExtension(ext)
                                             
-                                            return Character(id: id, name: name, description: description, modified: modified, resourceURI: resourceURI, thumbnailURI: thumbnailURIWithExtension)
-
+                                            if let comicsDict = dictionary[ comicsKey ]as? Dictionary<String, AnyObject>{
+                                                if let comics = ResourceMapper.createObjectFrom(comicsDict){
+                                                    return Character(id: id, name: name, description: description, modified: modified, resourceURI: resourceURI, thumbnailURI: thumbnailURIWithExtension, comics: comics)
+                                                }
+                                            }
+ 
                                         }
                                     }
                                 }
