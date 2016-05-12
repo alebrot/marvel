@@ -11,12 +11,14 @@ import UIKit
 class ContentViewController: UIViewController {
     var item: Item?
     @IBOutlet weak var imageView: UIImageView!
-    
+    @IBOutlet weak var label: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if( item != nil ){
             let url = item!.resourceURI
+            label.text = item!.name
             
             MarvelRequest.getComic(url, completionHandler: { (ok: Bool, objects: [Comic]?, error: NSError?) in
                 if let comic = objects?.first{

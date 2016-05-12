@@ -37,6 +37,7 @@ class ReusablePageViewController: UIPageViewController {
                                animated: true,
                                completion: nil)
         }
+                
     }
     
 

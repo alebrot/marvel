@@ -9,21 +9,6 @@
 import Foundation
 
 
-//
-//"comics": {
-//    "available": 11,
-//    "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/comics",
-//    "items": [
-
-//"resourceURI": "http://gateway.marvel.com/v1/public/comics/21366",
-//"name": "Avengers: The Initiative (2007) #14"
-
-
-
-
-
-
-
 class Character: NSObject {
     
     private static let hashPrefix = "Character"
