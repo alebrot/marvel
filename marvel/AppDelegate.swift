@@ -89,8 +89,12 @@ public extension UIStoryboard {
         return vc
         
     }
-    
-    
+    internal class func collectionContainer(character: Character) -> CollectionContainer {
+        let vc = mainStoryboard().instantiateViewControllerWithIdentifier("CollectionContainer") as! CollectionContainer
+        vc.contentViewController = self.pictureCollectionViewController(character)
+        return vc
+        
+    }
     
     
 }

@@ -8,7 +8,16 @@
 
 import UIKit
 
+
+protocol PictureCollectionViewControllerDelegate{
+    func currentPageIndex(page: Int, pagesCount: Int)
+    func currentPageTitle(title: String)
+}
+
+
 class PictureCollectionViewController: UICollectionViewController {
+    
+    var delegate: PictureCollectionViewControllerDelegate?
     
     var cache: ImageCache = ImageCache()
     
@@ -17,13 +26,24 @@ class PictureCollectionViewController: UICollectionViewController {
     private var items = [Item]()
     
     override func viewDidLoad() {
+     
         super.viewDidLoad()
-        
         if let items = character?.comics.items{
             self.items = items
         }
+
         
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.items.count>0{
+            let item = self.items[0]
+            delegate?.currentPageIndex(1, pagesCount: self.items.count)
+            delegate?.currentPageTitle(item.name)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         self.cache.clear()
@@ -81,6 +101,41 @@ class PictureCollectionViewController: UICollectionViewController {
             }
         })
     }
+    
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        
+//        CGRect visibleRect = (CGRect){.origin = self.collectionView.contentOffset, .size = self.collectionView.bounds.size};
+//        CGPoint visiblePoint = CGPointMake(CGRectGetMidX(visibleRect), CGRectGetMidY(visibleRect));
+//        NSIndexPath *visibleIndexPath = [self.collectionView indexPathForItemAtPoint:visiblePoint];
+        
+        
+        let visibleRect = CGRect(origin: self.collectionView!.contentOffset, size: self.collectionView!.bounds.size)
+        let visiblePoint = CGPoint(x: CGRectGetMidX(visibleRect), y: CGRectGetMidY(visibleRect))
+        
+        if let visibleIndexPath = self.collectionView?.indexPathForItemAtPoint(visiblePoint){
+            
+            
+            
+            let index = visibleIndexPath.row
+            
+            let item = self.items[index]
+            
+            
+            delegate?.currentPageIndex(index+1, pagesCount: self.items.count)
+            delegate?.currentPageTitle(item.name)
+        }
+        
+               // if let visibleItems = self.collectionView?.indexPathsForVisibleItems(){
+        
+        
+        
+        
+        
+               // }
+    }
+    
 
 }
 
