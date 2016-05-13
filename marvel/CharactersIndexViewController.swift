@@ -12,8 +12,15 @@ class CharactersIndexViewController: BaseContainerViewController {
    
     var searchController: UISearchController!
     
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = false
+
+    }
+    
     override func viewDidLoad() {
-        
+
         
         if let charactersTableViewController = self.contentViewController as? CharactersTableViewController{
             charactersTableViewController.delegate = self
@@ -33,11 +40,8 @@ class CharactersIndexViewController: BaseContainerViewController {
         self.searchController.searchBar.translucent = false
 
         
-        
-        
         super.viewDidLoad()
 
-       
     }
     
     func showSearch(sender: UIBarButtonItem) {

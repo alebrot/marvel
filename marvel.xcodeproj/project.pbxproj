@@ -17,6 +17,8 @@
 		42114D051CE4CC0600358586 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42114D041CE4CC0600358586 /* Item.swift */; };
 		42114D071CE4DCE200358586 /* PictureCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42114D061CE4DCE200358586 /* PictureCollectionViewController.swift */; };
 		42114D091CE5C7B300358586 /* CollectionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42114D081CE5C7B300358586 /* CollectionContainer.swift */; };
+		42114D0B1CE5E46F00358586 /* DetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42114D0A1CE5E46F00358586 /* DetailsTableViewController.swift */; };
+		42114D0F1CE61CA100358586 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42114D0E1CE61CA100358586 /* UIImage.swift */; };
 		4245C9FC1CD9EA9F007F3033 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245C9FB1CD9EA9F007F3033 /* AppDelegate.swift */; };
 		4245C9FE1CD9EA9F007F3033 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245C9FD1CD9EA9F007F3033 /* ViewController.swift */; };
 		4245CA011CD9EA9F007F3033 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4245C9FF1CD9EA9F007F3033 /* Main.storyboard */; };
@@ -66,6 +68,8 @@
 		42114D041CE4CC0600358586 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		42114D061CE4DCE200358586 /* PictureCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewController.swift; sourceTree = "<group>"; };
 		42114D081CE5C7B300358586 /* CollectionContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionContainer.swift; sourceTree = "<group>"; };
+		42114D0A1CE5E46F00358586 /* DetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsTableViewController.swift; sourceTree = "<group>"; };
+		42114D0E1CE61CA100358586 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		4245C9F81CD9EA9E007F3033 /* marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4245C9FB1CD9EA9F007F3033 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4245C9FD1CD9EA9F007F3033 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 				4245C9FB1CD9EA9F007F3033 /* AppDelegate.swift */,
 				4245C9FD1CD9EA9F007F3033 /* ViewController.swift */,
 				4245C9FF1CD9EA9F007F3033 /* Main.storyboard */,
+				42114D0A1CE5E46F00358586 /* DetailsTableViewController.swift */,
 				4245CA021CD9EA9F007F3033 /* Assets.xcassets */,
 				4245CA041CD9EA9F007F3033 /* LaunchScreen.storyboard */,
 				4245CA071CD9EA9F007F3033 /* Info.plist */,
@@ -213,6 +218,7 @@
 				4245CA2E1CD9F4CD007F3033 /* String.swift */,
 				4245CA341CD9F937007F3033 /* NSData.swift */,
 				4245CA3D1CDB5A30007F3033 /* NSURL.swift */,
+				42114D0E1CE61CA100358586 /* UIImage.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -384,12 +390,14 @@
 				42114CF61CE3377800358586 /* BaseContainerViewController.swift in Sources */,
 				42114D091CE5C7B300358586 /* CollectionContainer.swift in Sources */,
 				4245C9FC1CD9EA9F007F3033 /* AppDelegate.swift in Sources */,
+				42114D0F1CE61CA100358586 /* UIImage.swift in Sources */,
 				4245CA421CDBA87A007F3033 /* Character.swift in Sources */,
 				4245CA381CD9FBEB007F3033 /* ApiRepository.swift in Sources */,
 				42114D051CE4CC0600358586 /* Item.swift in Sources */,
 				42114D031CE4CBEA00358586 /* Resource.swift in Sources */,
 				42114CFD1CE48E6F00358586 /* ReusablePageViewController.swift in Sources */,
 				42114CFB1CE34DBF00358586 /* CharactersIndexViewController.swift in Sources */,
+				42114D0B1CE5E46F00358586 /* DetailsTableViewController.swift in Sources */,
 				4245CA2F1CD9F4CD007F3033 /* String.swift in Sources */,
 				42114CFF1CE48FBC00358586 /* ContentViewController.swift in Sources */,
 				4245CA2C1CD9EF93007F3033 /* Config.swift in Sources */,

@@ -25,14 +25,29 @@ class PictureCollectionViewController: UICollectionViewController {
     
     private var items = [Item]()
     
+    
+    
+    var enableCloseButton = false
+    
     override func viewDidLoad() {
      
         super.viewDidLoad()
         if let items = character?.comics.items{
             self.items = items
         }
-
         
+        if enableCloseButton {
+            // st up back button
+            let closeButton = UIButton(frame: CGRectMake(self.view.frame.width - 50, 0, 50, 50))
+            closeButton.setBackgroundImage(UIImage(named: "ImageClose"), forState: UIControlState.Normal)
+            closeButton.addTarget(self, action: #selector(PictureCollectionViewController.handleCloseButton(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            self.view.addSubview(closeButton)
+        }
+        
+    }
+    
+    func handleCloseButton(recognizer: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -65,9 +80,22 @@ class PictureCollectionViewController: UICollectionViewController {
         let hashValue = item.hashValue
         let storagePath = Config.StorageFilePaths.resourceComicsPath(String(hashValue))
         
-
+        if let imageView = cell.backgroundView as? UIImageView{
+            //TODO: add placeholder
+            imageView.image = nil
+        }
+        
         if let image = self.cache.get(hashValue) {
-            cell.backgroundView = UIImageView(image: image)
+            
+            if let imageView = cell.backgroundView as? UIImageView{
+                imageView.image = image
+            }else{
+                
+                let imageView = UIImageView(image: image)
+                imageView.contentMode = .ScaleAspectFill
+                cell.backgroundView = imageView
+            }
+
         } else {
             
             Utilities.queues.asyncQueue.addOperationWithBlock({
@@ -105,12 +133,6 @@ class PictureCollectionViewController: UICollectionViewController {
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         
-        
-//        CGRect visibleRect = (CGRect){.origin = self.collectionView.contentOffset, .size = self.collectionView.bounds.size};
-//        CGPoint visiblePoint = CGPointMake(CGRectGetMidX(visibleRect), CGRectGetMidY(visibleRect));
-//        NSIndexPath *visibleIndexPath = [self.collectionView indexPathForItemAtPoint:visiblePoint];
-        
-        
         let visibleRect = CGRect(origin: self.collectionView!.contentOffset, size: self.collectionView!.bounds.size)
         let visiblePoint = CGPoint(x: CGRectGetMidX(visibleRect), y: CGRectGetMidY(visibleRect))
         
@@ -127,15 +149,10 @@ class PictureCollectionViewController: UICollectionViewController {
             delegate?.currentPageTitle(item.name)
         }
         
-               // if let visibleItems = self.collectionView?.indexPathsForVisibleItems(){
-        
-        
-        
-        
-        
-               // }
     }
     
-
+    
+    
+    
+    
 }
-

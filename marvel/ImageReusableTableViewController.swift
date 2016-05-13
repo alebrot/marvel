@@ -26,13 +26,12 @@ class ImageReusableTableViewController<T, C: UITableViewCell>: ReusableTableView
         }
     }
     
-    
     func getImageHashForObject(object: T, atIndexPath indexPath: NSIndexPath)->Int{
         return 0
     }
     
     func placeholderForImageView(imageView: UIImageView, andObject object: T, indexPath: NSIndexPath) -> UIImage? {
-        return nil
+        return UIImage.imageWithColor(UIColor.blackColor())
     }
     
     func image(imageView: UIImageView, object: T, indexPath: NSIndexPath, completionHandler: (image:UIImage?) -> Void) -> UIImage? {
@@ -64,10 +63,7 @@ class ImageReusableTableViewController<T, C: UITableViewCell>: ReusableTableView
                 self.inflateImageView(imageView, forObject: object, indexPath: indexPath, withCache: self.caches[index])
             }
         }
-        
-        
-        
-        
+
     }
     
     private func inflateImageView(imageView: UIImageView, forObject object: T, indexPath: NSIndexPath, withCache cache: ImageCache){

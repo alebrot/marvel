@@ -91,10 +91,21 @@ public extension UIStoryboard {
     }
     internal class func collectionContainer(character: Character) -> CollectionContainer {
         let vc = mainStoryboard().instantiateViewControllerWithIdentifier("CollectionContainer") as! CollectionContainer
-        vc.contentViewController = self.pictureCollectionViewController(character)
+        let pvc = self.pictureCollectionViewController(character)
+        pvc.enableCloseButton = true
+        vc.contentViewController = pvc
         return vc
         
     }
+    
+    internal class func detailsTableViewController(character: Character) -> DetailsTableViewController {
+        let vc = mainStoryboard().instantiateViewControllerWithIdentifier("DetailsTableViewController") as! DetailsTableViewController
+        vc.character = character
+        return vc
+        
+    }
+    
+    
     
     
 }
