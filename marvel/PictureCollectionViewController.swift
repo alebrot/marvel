@@ -52,7 +52,7 @@ class PictureCollectionViewController: UICollectionViewController {
             
             Utilities.queues.asyncQueue.addOperationWithBlock({
                 if let localImage = ImageUtilities.getImage(storagePath){
-                    self.addImageToCacheAndRefreshItems(localImage, indexPath: indexPath)
+                    self.addImageToCacheAndRefreshItems(hashValue, image: localImage, indexPath: indexPath)
                 }else{
                     let url = item.resourceURI
                     
@@ -60,7 +60,7 @@ class PictureCollectionViewController: UICollectionViewController {
                         if let comic = objects?.first{
                             ApiRepository().downloadImage(comic.thumbnailURI, storageFilePaths: storagePath, completionHandler: { (image) in
                                 if image != nil{
-                                    self.addImageToCacheAndRefreshItems(image!, indexPath: indexPath)
+                                    self.addImageToCacheAndRefreshItems(hashValue, image: image!, indexPath: indexPath)
                                 }
                             })
                         }
@@ -73,7 +73,7 @@ class PictureCollectionViewController: UICollectionViewController {
         // Configure the cell
         return cell
     }
-    private func addImageToCacheAndRefreshItems(image: UIImage, indexPath: NSIndexPath){
+    private func addImageToCacheAndRefreshItems(hashValue: Int, image: UIImage, indexPath: NSIndexPath){
         self.cache.add(hashValue, value: image)
         dispatch_async(dispatch_get_main_queue(), {
             if (self.collectionView?.cellForItemAtIndexPath(indexPath) != nil){
