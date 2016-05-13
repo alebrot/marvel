@@ -24,6 +24,7 @@ struct Config {
         
         struct CellIdentifiers {
             static let CharacterCell = "CharacterCell"
+            static let ItemCell = "ItemCell"
         }
         
         static var listLoadLimit = 20;

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageReusableTableViewController<T, C: UITableViewCell>: ReusableTableViewController<T, C> {
+class ImageReusableTableViewController<T, C: UITableViewCell>: ReusableTableViewController<T, C>{
     
     var caches: [ImageCache]!
     
@@ -132,3 +132,10 @@ class ImageCache{
         self.cache.removeAll()
     }
 }
+
+
+
+
+
+
+

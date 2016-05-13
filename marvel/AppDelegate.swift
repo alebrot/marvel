@@ -45,6 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        Utilities.fileStorage.removeDirectoryContent(FileStorageUtilities.storageBasePath)
     }
 
 }
@@ -80,7 +81,16 @@ public extension UIStoryboard {
         let vc = mainStoryboard().instantiateViewControllerWithIdentifier("ContentViewController") as! ContentViewController
         vc.item = item
         return vc
-    }   
+    }
+    
+    internal class func pictureCollectionViewController(character: Character) -> PictureCollectionViewController {
+        let vc = mainStoryboard().instantiateViewControllerWithIdentifier("PictureCollectionViewController") as! PictureCollectionViewController
+        vc.character = character
+        return vc
+        
+    }
+    
+    
     
     
 }
