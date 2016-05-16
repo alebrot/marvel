@@ -35,7 +35,6 @@ class MarvelRequest{
         params[MarvelRequest.limitKey] = limit
         params[MarvelRequest.offsetKey] = offset
 
-        
         if let url = NSURL(string:MarvelRequest.baseUrl+"characters")?.URLByAppendingQueryParams(params){
             let request =  NSURLRequest(URL: url)
             ApiRepository().getMultipleObjects(request, mapperType: CharacterMapper.self, completionHandler: completionHandler)
@@ -55,23 +54,11 @@ class MarvelRequest{
         }
         
     }
-    
-    
+
     static func  getComic(url: NSURL, completionHandler: CompletionHandlerComics){
         let request =  NSURLRequest(URL: url.URLByAppendingQueryParams(getDeafultParams()))
         ApiRepository().getMultipleObjects(request, mapperType: ComicMapper.self, completionHandler: completionHandler)        
     }
-    
-    
-//    static func  getResource(url: NSURL){
-//        let params = getDeafultParams()
-//
-//        let request =  NSURLRequest(URL: url.URLByAppendingQueryParams(params))
-//        ApiRepository().getSingleObject(request, mapperType: ResourceMapper.self) { (ok, object, error) in
-//            
-//        }
-//        
-//    }
     
     
     static func getCharacterThumbnail(character: Character, saveLocally: Bool = true, completionHandler: (image:UIImage?) -> Void) -> UIImage? {
@@ -87,7 +74,6 @@ class MarvelRequest{
         }
         
     }
-    
     
     private static func getDeafultParams() -> [String: AnyObject]{
         let ts = Int(NSDate().timeIntervalSince1970)

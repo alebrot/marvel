@@ -10,9 +10,7 @@ import UIKit
 
 class DetailsTableViewController: UITableViewController {
     
-    
     var character: Character?
-    
     
     @IBOutlet weak var headerImageView: UIImageView!
         {
@@ -26,7 +24,6 @@ class DetailsTableViewController: UITableViewController {
                         self.headerImageView.image = image
                     })
                 }){
-                    
                     
                     self.headerImageView.image = image
                 }

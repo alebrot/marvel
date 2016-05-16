@@ -179,11 +179,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ImageMarvel" translatesAutoresizingMaskIntoConstraints="NO" id="lOa-X9-Yzh">
-                                <rect key="frame" x="26" y="28" width="35" height="46"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageMarvel" translatesAutoresizingMaskIntoConstraints="NO" id="lOa-X9-Yzh">
+                                <rect key="frame" x="269" y="286" width="62" height="28"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lOa-X9-Yzh" firstAttribute="centerX" secondItem="Tqi-9c-gao" secondAttribute="centerX" id="LIb-u7-K2W"/>
+                            <constraint firstItem="lOa-X9-Yzh" firstAttribute="centerY" secondItem="Tqi-9c-gao" secondAttribute="centerY" id="qDc-Al-yKB"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="lOa-X9-Yzh" id="YR9-bb-js3"/>

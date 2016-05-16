@@ -11,27 +11,6 @@ import UIKit
 
 class ApiRepository {
     
-    static let dictionarySingleNameKey = "data"
-    static let dictionaryMultipleNameKey = "data"
-    
-    func getSingleObject<T>(request: NSURLRequest, mapperType: BaseMapper<T>.Type, completionHandler: (ok:Bool, object:T?, error:NSError?) -> Void) {
-        NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-            var object: T?
-            var ok = false
-            if let dictionary = data?.toDictionary() {
-                if let dataDict = dictionary[ApiRepository.dictionarySingleNameKey] as? Dictionary<String, AnyObject> {
-                    
-                    object = mapperType.createObjectFrom(dataDict)
-                    if(object != nil){
-                        ok = true
-                    }
-                }
-            }
-            completionHandler(ok: ok, object: object, error: error)
-        }.resume()
-    }
-    
     func getMultipleObjects<T>(request: NSURLRequest, mapperType: BaseMapper<T>.Type, completionHandler: (ok:Bool, objects:[T]?, error:NSError?) -> Void) {
         NSURLSession.sharedSession().dataTaskWithRequest(request) {
             (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in

@@ -84,24 +84,13 @@ public extension UIStoryboard {
         return CharactersIndexViewController(viewController: self.charactersTableViewController())
     }
     
-    internal class func reusablePageViewController(resource: Resource) -> ReusablePageViewController {
-        let vc = mainStoryboard().instantiateViewControllerWithIdentifier("ReusablePageViewController") as! ReusablePageViewController
-        vc.resource1 = resource
-        return vc
-        
-    }
-    internal class func contentViewController(item: Item) -> ContentViewController {
-        let vc = mainStoryboard().instantiateViewControllerWithIdentifier("ContentViewController") as! ContentViewController
-        vc.item = item
-        return vc
-    }
-    
     internal class func pictureCollectionViewController(character: Character) -> PictureCollectionViewController {
         let vc = mainStoryboard().instantiateViewControllerWithIdentifier("PictureCollectionViewController") as! PictureCollectionViewController
         vc.character = character
         return vc
         
     }
+    
     internal class func collectionContainer(character: Character) -> CollectionContainer {
         let vc = mainStoryboard().instantiateViewControllerWithIdentifier("CollectionContainer") as! CollectionContainer
         let pvc = self.pictureCollectionViewController(character)
@@ -121,11 +110,6 @@ public extension UIStoryboard {
     internal class func viewController() -> ViewController {
         let vc = mainStoryboard().instantiateViewControllerWithIdentifier("ViewController") as! ViewController
         return vc
-    }
-    
-    
-    
-    
-    
+    }    
     
 }
