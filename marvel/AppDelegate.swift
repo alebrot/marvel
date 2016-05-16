@@ -20,9 +20,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.redColor()
         UINavigationBar.appearance().translucent = false
    
+        let navigationViewController = UINavigationController(rootViewController: UIStoryboard.charactersIndexViewController())
+        navigationViewController.navigationBar.barStyle = .Black
         
-     //   UINavigationBar.appearance().opaque = true
-         return true
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.rootViewController =  navigationViewController
+        window?.makeKeyAndVisible()
+        
+        let splashViewController = UIStoryboard.viewController()
+        
+        window?.addSubview(splashViewController.view)
+        let delay = (Int64(NSEC_PER_SEC) * 3) //3 sec delay
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay), dispatch_get_main_queue(), { () -> Void in
+            splashViewController.view.removeFromSuperview()
+        })
+        
+        return true
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -104,6 +117,13 @@ public extension UIStoryboard {
         return vc
         
     }
+    
+    internal class func viewController() -> ViewController {
+        let vc = mainStoryboard().instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+        return vc
+    }
+    
+    
     
     
     

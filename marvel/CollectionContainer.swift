@@ -13,18 +13,14 @@ class CollectionContainer: BaseContainerViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var pagerLabel: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let pictureCollectionViewController = self.contentViewController as? PictureCollectionViewController{
             pictureCollectionViewController.delegate = self
         }
-        
-        
     }
 }
-
 
 extension CollectionContainer: PictureCollectionViewControllerDelegate{
     func currentPageIndex(page: Int, pagesCount: Int){

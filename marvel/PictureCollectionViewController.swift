@@ -138,12 +138,8 @@ class PictureCollectionViewController: UICollectionViewController {
         
         if let visibleIndexPath = self.collectionView?.indexPathForItemAtPoint(visiblePoint){
             
-            
-            
             let index = visibleIndexPath.row
-            
             let item = self.items[index]
-            
             
             delegate?.currentPageIndex(index+1, pagesCount: self.items.count)
             delegate?.currentPageTitle(item.name)

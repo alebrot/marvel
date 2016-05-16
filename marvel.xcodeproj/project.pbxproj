@@ -127,8 +127,18 @@
 			isa = PBXGroup;
 			children = (
 				427928191CE21E3A00C43885 /* CharactersTableViewController.swift */,
+				42114D061CE4DCE200358586 /* PictureCollectionViewController.swift */,
 			);
 			name = Reusable;
+			sourceTree = "<group>";
+		};
+		42114D101CE9A8AD00358586 /* --- */ = {
+			isa = PBXGroup;
+			children = (
+				42114CFC1CE48E6F00358586 /* ReusablePageViewController.swift */,
+				42114CFE1CE48FBC00358586 /* ContentViewController.swift */,
+			);
+			name = "---";
 			sourceTree = "<group>";
 		};
 		4245C9EF1CD9EA9E007F3033 = {
@@ -159,9 +169,7 @@
 				4245CA2A1CD9ED59007F3033 /* Mappers */,
 				4245CA291CD9ED2D007F3033 /* Models */,
 				4245C9FB1CD9EA9F007F3033 /* AppDelegate.swift */,
-				4245C9FD1CD9EA9F007F3033 /* ViewController.swift */,
 				4245C9FF1CD9EA9F007F3033 /* Main.storyboard */,
-				42114D0A1CE5E46F00358586 /* DetailsTableViewController.swift */,
 				4245CA021CD9EA9F007F3033 /* Assets.xcassets */,
 				4245CA041CD9EA9F007F3033 /* LaunchScreen.storyboard */,
 				4245CA071CD9EA9F007F3033 /* Info.plist */,
@@ -169,8 +177,6 @@
 				4245CA301CD9F5F6007F3033 /* marvel-Bridging-Header.h */,
 				4245CA3F1CDB9332007F3033 /* Utilities.swift */,
 				4279281B1CE21E8700C43885 /* Controllers */,
-				42114CFC1CE48E6F00358586 /* ReusablePageViewController.swift */,
-				42114CFE1CE48FBC00358586 /* ContentViewController.swift */,
 			);
 			path = marvel;
 			sourceTree = "<group>";
@@ -235,12 +241,14 @@
 		4279281B1CE21E8700C43885 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				42114D101CE9A8AD00358586 /* --- */,
 				4279281C1CE21E9700C43885 /* Parent */,
 				42114CF91CE34D9800358586 /* Reusable */,
 				42114CF71CE3385500358586 /* CharactersSearchResultsController.swift */,
 				42114CFA1CE34DBF00358586 /* CharactersIndexViewController.swift */,
-				42114D061CE4DCE200358586 /* PictureCollectionViewController.swift */,
 				42114D081CE5C7B300358586 /* CollectionContainer.swift */,
+				42114D0A1CE5E46F00358586 /* DetailsTableViewController.swift */,
+				4245C9FD1CD9EA9F007F3033 /* ViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

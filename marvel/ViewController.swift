@@ -9,25 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.        
+        // Do any additional setup after loading the view, typically from a nib.
+
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [.Autoreverse, .Repeat], animations: {
+            var frame = self.imageView.frame;
+            frame.origin.y = frame.origin.y - 8;
+            self.imageView.frame = frame;
+            }, completion: nil)
+        
     }
     
-    @IBAction func showIndex(sender: AnyObject) {
-            self.navigationController?.pushViewController(UIStoryboard.charactersIndexViewController(), animated: true)
-    }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
-    @IBAction func showImage(sender: AnyObject) {
-        
-        //self.navigationController?.pushViewController(UIStoryboard.reusablePageViewController(), animated: true)
-    }
 }
 
