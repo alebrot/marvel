@@ -58,10 +58,11 @@ class CharactersTableViewController: ImageReusableTableViewController<Character,
     }
     
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let caracter = self.objects[indexPath.row]
-        self.navigationController?.pushViewController(UIStoryboard.detailsTableViewController(caracter), animated: true)
-    }
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
+//        //let caracter = self.objects[indexPath.row]
+//        //self.navigationController?.pushViewController(UIStoryboard.detailsTableViewController(caracter), animated: true)
+//    }
 
     
 }

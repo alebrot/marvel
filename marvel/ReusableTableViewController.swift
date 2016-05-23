@@ -8,13 +8,18 @@
 
 import UIKit
 
-@objc protocol ReusableTableViewControllerDelegate {
+@objc protocol ReusableTableViewControllerDataSourceDelegate {
     func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects:NSArray?) -> Void)
+}
+
+@objc protocol ReusableTableViewControllerDelegate {
+    func didSelectObject(object: AnyObject, atIndexPath indexPath: NSIndexPath)
 }
 
 
 class ReusableTableViewController<T, C:UITableViewCell>: UITableViewController {
     
+    var delegateDataSource: ReusableTableViewControllerDataSourceDelegate?
     var delegate: ReusableTableViewControllerDelegate?
 
     
@@ -83,7 +88,7 @@ class ReusableTableViewController<T, C:UITableViewCell>: UITableViewController {
     }
     
     func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects:NSArray?) -> Void) {
-        self.delegate?.dataWithLimit(limit, offset: offset, completionHandler: completionHandler)
+        self.delegateDataSource?.dataWithLimit(limit, offset: offset, completionHandler: completionHandler)
     }
     
     //internal callback
@@ -238,6 +243,12 @@ class ReusableTableViewController<T, C:UITableViewCell>: UITableViewController {
             self.scrollDelegateHelper(scrollView)
         }
         
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let object = self.objectAtIndexPath(indexPath) as? AnyObject{
+            self.delegate?.didSelectObject(object, atIndexPath: indexPath)
+        }
     }
     
 }

@@ -8,16 +8,24 @@
 
 import UIKit
 
+
+protocol CharactersSearchResultsControllerDelegate{
+    func didSelectCharacter(character: Character)
+}
+
 class CharactersSearchResultsController: BaseContainerViewController {
 
+    
+    var delegate:CharactersSearchResultsControllerDelegate?
     
     var searchText: String = ""
     
     override func viewDidLoad() {
         
         if let charactersTableViewController = self.contentViewController as? CharactersTableViewController{
-            charactersTableViewController.delegate = self
+            charactersTableViewController.delegateDataSource = self
             charactersTableViewController.imageDelegate = self
+            charactersTableViewController.delegate = self
             charactersTableViewController.tableView.contentInset.top = 44 + UIApplication.sharedApplication().statusBarFrame.size.height
         }
         super.viewDidLoad()
@@ -26,7 +34,7 @@ class CharactersSearchResultsController: BaseContainerViewController {
     
 }
 
-extension CharactersSearchResultsController: ReusableTableViewControllerDelegate{
+extension CharactersSearchResultsController: ReusableTableViewControllerDataSourceDelegate{
     func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects: NSArray?) -> Void) {
 
         MarvelRequest.getCharachterSearch(self.searchText, limit: limit, offset: offset) { (ok, objects, error) in
@@ -59,6 +67,15 @@ extension CharactersSearchResultsController: ImageReusableTableViewControllerDel
     }
 }
 
+extension CharactersSearchResultsController: ReusableTableViewControllerDelegate{
+    func didSelectObject(object: AnyObject, atIndexPath indexPath: NSIndexPath) {
+        if let character = object as? Character{
+            self.dismissViewControllerAnimated(true, completion: { 
+                self.delegate?.didSelectCharacter(character)
+            })
+        }
+    }
+}
 
 
 

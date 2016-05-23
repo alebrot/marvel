@@ -23,6 +23,7 @@ class CharactersIndexViewController: BaseContainerViewController {
 
         
         if let charactersTableViewController = self.contentViewController as? CharactersTableViewController{
+            charactersTableViewController.delegateDataSource = self
             charactersTableViewController.delegate = self
         }
         
@@ -31,6 +32,8 @@ class CharactersIndexViewController: BaseContainerViewController {
         
         
         let charactersSearchResultsController = UIStoryboard.charactersSearchResultsController()
+        
+        charactersSearchResultsController.delegate = self
         
         self.searchController = UISearchController(searchResultsController: charactersSearchResultsController)
         self.searchController.hidesNavigationBarDuringPresentation = false
@@ -50,11 +53,26 @@ class CharactersIndexViewController: BaseContainerViewController {
 }
 
 
-extension CharactersIndexViewController: ReusableTableViewControllerDelegate{
+extension CharactersIndexViewController: ReusableTableViewControllerDataSourceDelegate{
     func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects: NSArray?) -> Void) {
         
         MarvelRequest.getCharachterIndex(limit, offset: offset) { (ok, objects, error) in
             completionHandler(objects: objects)
+        }
+    }
+}
+
+
+extension CharactersIndexViewController: CharactersSearchResultsControllerDelegate{
+    func didSelectCharacter(character: Character) {
+        self.navigationController?.pushViewController(UIStoryboard.detailsTableViewController(character), animated: true)
+    }
+}
+
+extension CharactersIndexViewController: ReusableTableViewControllerDelegate{
+    func didSelectObject(object: AnyObject, atIndexPath indexPath: NSIndexPath) {
+        if let character = object as? Character{
+            self.navigationController?.pushViewController(UIStoryboard.detailsTableViewController(character), animated: true)
         }
     }
 }
