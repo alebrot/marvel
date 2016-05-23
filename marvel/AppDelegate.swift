@@ -76,9 +76,17 @@ public extension UIStoryboard {
         
     }
     
-    internal class func charactersSearchResultsController() -> CharactersSearchResultsController {
-        return CharactersSearchResultsController(viewController: self.charactersTableViewController())
+    
+    internal class func searchCharactersViewController() -> CharactersTableViewController {
+        CharactersTableViewController.hash()
+        return mainStoryboard().instantiateViewControllerWithIdentifier("SearchCharactersViewController") as! CharactersTableViewController
     }
+    
+    internal class func charactersSearchResultsController() -> CharactersSearchResultsController {
+        return CharactersSearchResultsController(viewController: self.searchCharactersViewController())
+    }
+    
+    
     
     internal class func charactersIndexViewController() -> CharactersIndexViewController {
         return CharactersIndexViewController(viewController: self.charactersTableViewController())

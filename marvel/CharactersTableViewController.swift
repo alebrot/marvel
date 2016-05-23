@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharactersTableViewController: ImageReusableTableViewController<Character, UITableViewCell> {
+class CharactersTableViewController: ImageReusableTableViewController<Character, CharacterCell> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class CharactersTableViewController: ImageReusableTableViewController<Character,
         return Config.TableView.CellIdentifiers.CharacterCell
     }
     
-    override func inflateCell(cell: UITableViewCell, forObject object: Character, atIndexPath indexPath: NSIndexPath) {
+    override func inflateCell(cell: CharacterCell, forObject object: Character, atIndexPath indexPath: NSIndexPath) {
         
         if(cell.backgroundView == nil){
             let imageView = UIImageView()
@@ -32,7 +32,7 @@ class CharactersTableViewController: ImageReusableTableViewController<Character,
         }
         
         super.inflateCell(cell, forObject: object, atIndexPath: indexPath)
-        cell.textLabel?.text = object.name
+        cell.nameLabel.text = object.name
         
     }
     
@@ -54,17 +54,10 @@ class CharactersTableViewController: ImageReusableTableViewController<Character,
         return super.image(imageView, object: object, indexPath: indexPath, completionHandler: completionHandler)
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100.0
-    }
-    
-    
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let caracter = self.objects[indexPath.row]
         self.navigationController?.pushViewController(UIStoryboard.detailsTableViewController(caracter), animated: true)
-
-        //self.navigationController?.pushViewController(UIStoryboard.reusablePageViewController(caracter.comics), animated: true)
     }
 
     
