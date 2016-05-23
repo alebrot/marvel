@@ -41,6 +41,9 @@ class CharactersTableViewController: ImageReusableTableViewController<Character,
     }
     
     override func imageViewsForCell(cell: UITableViewCell, andObject object: Character, indexPath: NSIndexPath) -> [UIImageView] {
+        if let imageViews = imageDelegate?.imageViewsForCell(cell, andObject: object, indexPath: indexPath){
+            return imageViews
+        }
         return [cell.backgroundView as! UIImageView]
     }
     

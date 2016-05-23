@@ -9,5 +9,6 @@
 import UIKit
 
 class CharacterCell: UITableViewCell {
+    @IBOutlet weak var photoImageView: UIImageView?
     @IBOutlet weak var nameLabel: UILabel!
 }

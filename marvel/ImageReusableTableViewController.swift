@@ -8,13 +8,19 @@
 
 import UIKit
 
+
+@objc protocol ImageReusableTableViewControllerDelegate{
+    func imageViewsForCell(cell: UITableViewCell, andObject object: AnyObject, indexPath: NSIndexPath) -> [UIImageView]
+}
+
 class ImageReusableTableViewController<T, C: UITableViewCell>: ReusableTableViewController<T, C>{
+    
+    var imageDelegate: ImageReusableTableViewControllerDelegate?
     
     var caches: [ImageCache]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         caches = [ImageCache]()
     }
     
@@ -39,6 +45,12 @@ class ImageReusableTableViewController<T, C: UITableViewCell>: ReusableTableView
     }
     
     func imageViewsForCell(cell: C, andObject object: T, indexPath: NSIndexPath) -> [UIImageView]{
+        if let obj = object as? AnyObject{
+            if let imageViews = imageDelegate?.imageViewsForCell(cell, andObject: obj, indexPath: indexPath){
+                return imageViews
+            }
+        }
+ 
         return []
     }
     

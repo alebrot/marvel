@@ -17,6 +17,7 @@ class CharactersSearchResultsController: BaseContainerViewController {
         
         if let charactersTableViewController = self.contentViewController as? CharactersTableViewController{
             charactersTableViewController.delegate = self
+            charactersTableViewController.imageDelegate = self
             charactersTableViewController.tableView.contentInset.top = 44 + UIApplication.sharedApplication().statusBarFrame.size.height
         }
         super.viewDidLoad()
@@ -45,6 +46,17 @@ extension CharactersSearchResultsController: UISearchBarDelegate{
         }
     }
 
+}
+
+extension CharactersSearchResultsController: ImageReusableTableViewControllerDelegate{
+    func imageViewsForCell(cell: UITableViewCell, andObject object: AnyObject, indexPath: NSIndexPath) -> [UIImageView] {
+        if let characteCell = cell as? CharacterCell{
+            if let imageView = characteCell.photoImageView{
+                return [imageView]
+            }
+        }
+        return []
+    }
 }
 
 
