@@ -11,6 +11,7 @@ import UIKit
 @objc protocol ReusableTableViewControllerDataSourceDelegate {
     func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects:NSArray?) -> Void)
     optional func inflateCell(cell: UITableViewCell, object: AnyObject, indexPath: NSIndexPath)
+    optional func setupTableView(tableView: UITableView)
 }
 
 @objc protocol ReusableTableViewControllerDelegate {
@@ -54,6 +55,7 @@ class ReusableTableViewController<T, C:UITableViewCell>: UITableViewController {
         self.refreshControl = refreshControl
         self.objects = [T]()
         load()
+        self.delegateDataSource?.setupTableView?(self.tableView)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

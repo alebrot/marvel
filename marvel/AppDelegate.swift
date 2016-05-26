@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay), dispatch_get_main_queue(), { () -> Void in
             splashViewController.view.removeFromSuperview()
         })
-        
+                
         return true
     }
 

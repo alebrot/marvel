@@ -180,10 +180,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageMarvel" translatesAutoresizingMaskIntoConstraints="NO" id="lOa-X9-Yzh">
-                                <rect key="frame" x="200" y="250" width="200" height="100"/>
+                                <rect key="frame" x="250" y="275" width="100" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="6TT-Rd-5H5"/>
-                                    <constraint firstAttribute="height" constant="100" id="BpA-i2-b9b"/>
+                                    <constraint firstAttribute="width" constant="100" id="6TT-Rd-5H5"/>
+                                    <constraint firstAttribute="height" constant="50" id="BpA-i2-b9b"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -303,7 +303,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CharacterCell" rowHeight="240" id="Xs6-Q9-pCK" customClass="CharacterCell" customModule="marvel" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CharacterCell" rowHeight="240" id="Xs6-Q9-pCK" customClass="CharacterCell" customModule="marvel" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xs6-Q9-pCK" id="vIO-Kb-rcn">
@@ -347,46 +347,48 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SaP-YK-itu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2384" y="609"/>
+            <point key="canvasLocation" x="2337" y="615"/>
         </scene>
         <!--Characters Table View Controller-->
         <scene sceneID="UeD-Fc-44I">
             <objects>
                 <tableViewController storyboardIdentifier="SearchCharactersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yFn-Zh-NLw" customClass="CharactersTableViewController" customModule="marvel" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="QPo-to-byt">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" id="QPo-to-byt">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CharacterCell" rowHeight="60" id="Fyj-38-fwT" customClass="CharacterCell" customModule="marvel" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="60"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CharacterCell" rowHeight="50" id="Fyj-38-fwT" customClass="CharacterCell" customModule="marvel" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fyj-38-fwT" id="fhh-XM-es0">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="efH-P1-uQi">
-                                            <rect key="frame" x="8" y="5" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="-1" width="50" height="51"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="7Yr-Ne-E3C"/>
                                                 <constraint firstAttribute="height" constant="50" id="HlF-fS-9kr"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzx-C2-Rja">
-                                            <rect key="frame" x="76" y="19" width="516" height="21"/>
+                                            <rect key="frame" x="68" y="14" width="524" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="leadingMargin" secondItem="efH-P1-uQi" secondAttribute="leading" id="4ms-0K-oPK"/>
+                                        <constraint firstAttribute="leading" secondItem="efH-P1-uQi" secondAttribute="leading" id="4ms-0K-oPK"/>
                                         <constraint firstItem="efH-P1-uQi" firstAttribute="centerY" secondItem="fhh-XM-es0" secondAttribute="centerY" id="APi-nI-EjI"/>
                                         <constraint firstItem="Mzx-C2-Rja" firstAttribute="centerY" secondItem="efH-P1-uQi" secondAttribute="centerY" id="R84-VP-2Gv"/>
                                         <constraint firstItem="Mzx-C2-Rja" firstAttribute="leading" secondItem="efH-P1-uQi" secondAttribute="trailing" constant="18" id="j9F-5o-SDu"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Mzx-C2-Rja" secondAttribute="trailing" id="vGR-v4-4vq"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="nameLabel" destination="Mzx-C2-Rja" id="wsg-hz-aqo"/>
                                     <outlet property="photoImageView" destination="efH-P1-uQi" id="rsR-Rk-kzM"/>
