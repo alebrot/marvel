@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol ReusableTableViewControllerDataSourceDelegate {
     func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects:NSArray?) -> Void)
+    optional func inflateCell(cell: UITableViewCell, object: AnyObject, indexPath: NSIndexPath)
 }
 
 @objc protocol ReusableTableViewControllerDelegate {
@@ -84,7 +85,7 @@ class ReusableTableViewController<T, C:UITableViewCell>: UITableViewController {
     }
     
     func inflateCell(cell: C, forObject object: T, atIndexPath indexPath: NSIndexPath) {
-        
+        self.delegateDataSource?.inflateCell?(cell, object: object as! AnyObject, indexPath: indexPath)
     }
     
     func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects:NSArray?) -> Void) {

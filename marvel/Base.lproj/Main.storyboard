@@ -310,20 +310,31 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="239"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GhK-2g-Lbx">
-                                            <rect key="frame" x="27" y="195" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tEJ-DV-osc">
+                                            <rect key="frame" x="18" y="200" width="174" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="MbP-kt-FLA"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14t-rx-mNY">
+                                            <rect key="frame" x="38" y="200" width="134" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="GhK-2g-Lbx" secondAttribute="bottom" constant="15" id="Nj0-TU-ZkU"/>
-                                        <constraint firstItem="GhK-2g-Lbx" firstAttribute="leading" secondItem="vIO-Kb-rcn" secondAttribute="leadingMargin" constant="19" id="QdP-dv-taZ"/>
+                                        <constraint firstItem="tEJ-DV-osc" firstAttribute="trailing" secondItem="14t-rx-mNY" secondAttribute="trailing" constant="20" id="DTq-8d-XeH"/>
+                                        <constraint firstItem="14t-rx-mNY" firstAttribute="leading" secondItem="tEJ-DV-osc" secondAttribute="leading" constant="20" id="HCX-JJ-LKw"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="tEJ-DV-osc" secondAttribute="bottom" constant="10" id="bwX-hI-ehD"/>
+                                        <constraint firstItem="14t-rx-mNY" firstAttribute="top" secondItem="tEJ-DV-osc" secondAttribute="top" id="jyh-1w-Qn2"/>
+                                        <constraint firstItem="tEJ-DV-osc" firstAttribute="leading" secondItem="vIO-Kb-rcn" secondAttribute="leadingMargin" constant="10" id="q8o-tE-zff"/>
+                                        <constraint firstItem="14t-rx-mNY" firstAttribute="bottom" secondItem="tEJ-DV-osc" secondAttribute="bottom" id="wcp-Rp-IeU"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="nameLabel" destination="GhK-2g-Lbx" id="712-mb-x5T"/>
+                                    <outlet property="nameLabel" destination="14t-rx-mNY" id="R1H-7t-asC"/>
+                                    <outlet property="photoImageView" destination="tEJ-DV-osc" id="cgO-4L-jPn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

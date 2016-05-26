@@ -22,6 +22,10 @@ class CharactersIndexViewController: BaseContainerViewController {
     override func viewDidLoad() {
 
         
+        
+        let imageView = UIImageView(image: UIImage(named: "ImageMarvel"))
+        self.navigationItem.titleView = imageView
+        
         if let charactersTableViewController = self.contentViewController as? CharactersTableViewController{
             charactersTableViewController.delegateDataSource = self
             charactersTableViewController.delegate = self
@@ -60,6 +64,12 @@ extension CharactersIndexViewController: ReusableTableViewControllerDataSourceDe
             completionHandler(objects: objects)
         }
     }
+    
+    func inflateCell(cell: UITableViewCell, object: AnyObject, indexPath: NSIndexPath) {
+        if let characterCell = cell as? CharacterCell{
+            characterCell.photoImageView?.image =  UIImage(named: "ImageCellTitle")
+        }
+    }
 }
 
 
@@ -79,3 +89,6 @@ extension CharactersIndexViewController: ReusableTableViewControllerDelegate{
         }
     }
 }
+
+
+//theLabel.backgroundColor = UIColor(patternImage: UIImage(named: "blah")!)
