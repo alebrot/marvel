@@ -35,7 +35,7 @@ class CharactersIndexViewController: BaseContainerViewController {
         
         charactersSearchResultsController.delegate = self
         
-        self.searchController = UISearchController(searchResultsController: charactersSearchResultsController)
+        self.searchController = UISearchController(searchResultsController: UINavigationController(rootViewController: charactersSearchResultsController) )
         self.searchController.hidesNavigationBarDuringPresentation = false
         self.searchController.searchBar.delegate = charactersSearchResultsController
         self.searchController.searchBar.barStyle = UIBarStyle.Black
@@ -66,6 +66,9 @@ extension CharactersIndexViewController: ReusableTableViewControllerDataSourceDe
 extension CharactersIndexViewController: CharactersSearchResultsControllerDelegate{
     func didSelectCharacter(character: Character) {
         self.navigationController?.pushViewController(UIStoryboard.detailsTableViewController(character), animated: true)
+    }
+    func changeSearchBarVisibility(visible: Bool){
+        self.searchController.searchBar.hidden = !visible
     }
 }
 

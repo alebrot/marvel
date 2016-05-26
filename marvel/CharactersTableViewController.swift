@@ -12,10 +12,8 @@ class CharactersTableViewController: ImageReusableTableViewController<Character,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.automaticallyAdjustsScrollViewInsets = false
-        
+        self.automaticallyAdjustsScrollViewInsets = false
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-             
     }
     
     override func cellIdentifier(forIndexPath indexPath: NSIndexPath) -> String {

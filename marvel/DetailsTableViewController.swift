@@ -12,6 +12,7 @@ class DetailsTableViewController: UITableViewController {
     
     var character: Character?
     
+
     @IBOutlet weak var headerImageView: UIImageView!
         {
         didSet {

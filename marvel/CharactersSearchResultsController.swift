@@ -11,28 +11,33 @@ import UIKit
 
 protocol CharactersSearchResultsControllerDelegate{
     func didSelectCharacter(character: Character)
+    func changeSearchBarVisibility(visible: Bool)
 }
 
 class CharactersSearchResultsController: BaseContainerViewController {
 
-    
     var delegate:CharactersSearchResultsControllerDelegate?
     
     var searchText: String = ""
     
     override func viewDidLoad() {
         
+        self.navigationController?.navigationBarHidden = true
         if let charactersTableViewController = self.contentViewController as? CharactersTableViewController{
             charactersTableViewController.delegateDataSource = self
             charactersTableViewController.imageDelegate = self
             charactersTableViewController.delegate = self
-            charactersTableViewController.tableView.contentInset.top = 44 + UIApplication.sharedApplication().statusBarFrame.size.height
         }
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.delegate?.changeSearchBarVisibility(true)
+    }
     
 }
+
 
 extension CharactersSearchResultsController: ReusableTableViewControllerDataSourceDelegate{
     func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects: NSArray?) -> Void) {
@@ -70,13 +75,10 @@ extension CharactersSearchResultsController: ImageReusableTableViewControllerDel
 extension CharactersSearchResultsController: ReusableTableViewControllerDelegate{
     func didSelectObject(object: AnyObject, atIndexPath indexPath: NSIndexPath) {
         if let character = object as? Character{
-            self.dismissViewControllerAnimated(true, completion: { 
-                self.delegate?.didSelectCharacter(character)
-            })
+           self.delegate?.changeSearchBarVisibility(false)
+           self.navigationController?.pushViewController(UIStoryboard.detailsTableViewController(character), animated: true)
         }
     }
 }
-
-
 
 

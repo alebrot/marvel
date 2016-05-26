@@ -13,8 +13,9 @@ struct Utilities {
     static let typeConversion = TypeConversionUtilities()
     static let queues = QueueUtilities()
     static let fileStorage = FileStorageUtilities()
-
 }
+
+
 
 struct TypeConversionUtilities{
     
@@ -52,6 +53,17 @@ class CommonUtilities {
                 return apiURL
             }
         }
+        return nil
+    }
+    static func getStringFromBundle(filename: String, key: String) -> String? {
+        if let path = NSBundle.mainBundle().pathForResource(filename, ofType: "plist"){
+            if let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
+                if let value = dict[key] as? String {
+                    return value
+                }
+            }
+        }
+        
         return nil
     }
 }

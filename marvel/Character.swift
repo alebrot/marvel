@@ -39,23 +39,22 @@ class Character: NSObject {
 
 class CharacterMapper: BaseMapper<Character>{
     
-    private static let dataKey = "data"
-    private static let resultsKey = "results"
+    static let dataKey = "data"
+    static let resultsKey = "results"
     
-    private static let idKey = "id"
-    private static let nameKey = "name"
-    private static let descriptionKey = "description"
-    private static let modifiedKey = "modified"
-    private static let resourceURIKey = "resourceURI"
+    static let idKey = "id"
+    static let nameKey = "name"
+    static let descriptionKey = "description"
+    static let modifiedKey = "modified"
+    static let resourceURIKey = "resourceURI"
     
-    private static let thumbnailKey = "thumbnail"
-    private static let pathKey = "path"
-    private static let extensionKey = "extension"
+    static let thumbnailKey = "thumbnail"
+    static let pathKey = "path"
+    static let extensionKey = "extension"
     
-    private static let comicsKey = "comics"
+    static let comicsKey = "comics"
     
     override class func createObjectFrom(dictionary: Dictionary<String, AnyObject> ) -> Character?{
-        
         if let id = dictionary[idKey] as? Int{
             if let name =  dictionary[ nameKey ] as? String{
                 if let description =  dictionary[ descriptionKey ] as? String{
