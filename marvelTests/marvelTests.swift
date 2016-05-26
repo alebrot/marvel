@@ -33,4 +33,21 @@ class marvelTests: XCTestCase {
         }
     }
     
+    
+    
+    func getStringFromBundle(filename: String, key: String) -> String? {
+        
+        let bundle = NSBundle(forClass: self.dynamicType)
+        
+        if let path = bundle.pathForResource(filename, ofType: "plist"){
+            if let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
+                if let value = dict[key] as? String {
+                    return value
+                }
+            }
+        }
+        
+        return nil
+    }
+
 }
