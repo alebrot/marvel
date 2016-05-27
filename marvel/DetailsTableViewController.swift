@@ -105,6 +105,13 @@ class DetailsTableViewController: UITableViewController {
             break
         }
     }
+    
+    
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header: UITableViewHeaderFooterView = view as? UITableViewHeaderFooterView{
+            header.textLabel?.textColor = UIColor.redColor()
+        }
+    }
 }
 
 extension DetailsTableViewController: UICollectionViewDelegateFlowLayout{
