@@ -42,7 +42,7 @@ class CharactersSearchResultsController: BaseContainerViewController {
 
 extension CharactersSearchResultsController: ReusableTableViewControllerDataSourceDelegate{
     func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects: NSArray?) -> Void) {
-        MarvelRequest.getCharachterSearch(self.searchText, limit: limit, offset: offset) { (ok, objects, error) in
+        MarvelApiManager.request.getCharachterSearch(self.searchText, limit: limit, offset: offset) { (ok, objects, error) in
             completionHandler(objects: objects)
         }
     }

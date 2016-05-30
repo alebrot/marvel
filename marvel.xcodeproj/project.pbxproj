@@ -41,6 +41,7 @@
 		4279281A1CE21E3A00C43885 /* CharactersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427928191CE21E3A00C43885 /* CharactersTableViewController.swift */; };
 		42840B8E1CF346E600C295AA /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42840B8D1CF346E600C295AA /* CharacterCell.swift */; };
 		42D589EB1CFC22DC00868917 /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D589EA1CFC22DC00868917 /* XCUIElement.swift */; };
+		42D589ED1CFC494700868917 /* MarvelApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D589EC1CFC494700868917 /* MarvelApiManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		427928191CE21E3A00C43885 /* CharactersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersTableViewController.swift; sourceTree = "<group>"; };
 		42840B8D1CF346E600C295AA /* CharacterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		42D589EA1CFC22DC00868917 /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCUIElement.swift; sourceTree = "<group>"; };
+		42D589EC1CFC494700868917 /* MarvelApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelApiManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				4245CA301CD9F5F6007F3033 /* marvel-Bridging-Header.h */,
 				4245CA3F1CDB9332007F3033 /* Utilities.swift */,
 				4279281B1CE21E8700C43885 /* Controllers */,
+				42D589EC1CFC494700868917 /* MarvelApiManager.swift */,
 			);
 			path = marvel;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				4245CA3E1CDB5A30007F3033 /* NSURL.swift in Sources */,
 				4279281A1CE21E3A00C43885 /* CharactersTableViewController.swift in Sources */,
 				4245CA3C1CDB56C0007F3033 /* MarvelRequest.swift in Sources */,
+				42D589ED1CFC494700868917 /* MarvelApiManager.swift in Sources */,
 				4245CA401CDB9332007F3033 /* Utilities.swift in Sources */,
 				4245CA441CDC8845007F3033 /* ReusableTableViewController.swift in Sources */,
 				42114D071CE4DCE200358586 /* PictureCollectionViewController.swift in Sources */,

@@ -104,7 +104,7 @@ class PictureCollectionViewController: UICollectionViewController {
                 }else{
                     let url = item.resourceURI
                     
-                    MarvelRequest.getComic(url, completionHandler: { (ok: Bool, objects: [Comic]?, error: NSError?) in
+                    MarvelApiManager.request.getComic(url, completionHandler: { (ok: Bool, objects: [Comic]?, error: NSError?) in
                         if let comic = objects?.first{
                             ApiRepository().downloadImage(comic.thumbnailURI, storageFilePaths: storagePath, completionHandler: { (image) in
                                 if image != nil{

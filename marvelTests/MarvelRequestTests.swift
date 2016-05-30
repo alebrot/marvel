@@ -19,7 +19,7 @@ class MarvelRequestTests: marvelTests {
         let asyncExpectation = expectationWithDescription("ApiRequest")
         var characters: [marvel.Character]?
         
-        MarvelRequest.getCharachterIndex(limit, offset: 0) { (ok: Bool, objects: [marvel.Character]?, error: NSError?) in
+        MarvelApiManager.request.getCharachterIndex(limit, offset: 0) { (ok: Bool, objects: [marvel.Character]?, error: NSError?) in
             characters = objects
             asyncExpectation.fulfill()
         }
@@ -39,7 +39,7 @@ class MarvelRequestTests: marvelTests {
         
         let searchText = "a"
         
-        MarvelRequest.getCharachterSearch(searchText, limit: limit, offset: 0) { (ok, objects, error) in
+        MarvelApiManager.request.getCharachterSearch(searchText, limit: limit, offset: 0) { (ok, objects, error) in
             characters = objects
             asyncExpectation.fulfill()
         }

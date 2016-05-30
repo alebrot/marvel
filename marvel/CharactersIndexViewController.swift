@@ -60,7 +60,7 @@ class CharactersIndexViewController: BaseContainerViewController {
 extension CharactersIndexViewController: ReusableTableViewControllerDataSourceDelegate{
     func dataWithLimit(limit: Int, offset: Int, completionHandler: (objects: NSArray?) -> Void) {
         
-        MarvelRequest.getCharachterIndex(limit, offset: offset) { (ok, objects, error) in
+        MarvelApiManager.request.getCharachterIndex(limit, offset: offset) { (ok, objects, error) in
             completionHandler(objects: objects)
         }
     }

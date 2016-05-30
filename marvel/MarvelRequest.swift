@@ -13,11 +13,10 @@ class MarvelRequest{
     
     typealias CompletionHandlerCharacters = (ok: Bool, objects: [Character]?, error: NSError?) -> Void
     typealias CompletionHandlerComics = (ok: Bool, objects: [Comic]?, error: NSError?) -> Void
-
     
-    private static let privateKey =  Config.Keys.marvelPrivate
-    private static let  publicKey =  Config.Keys.marvelPublic
-    private static let baseUrl = Config.baseUrl
+    private let privateKey: String
+    private let  publicKey: String
+    private let baseUrl: String
     
     private static let apiKey = "apikey"
     private static let hashKey = "hash"
@@ -27,35 +26,39 @@ class MarvelRequest{
     private static let offsetKey = "offset"
     
     private static let nameStartsWithKey = "nameStartsWith"
-  
-
-    static func  getCharachterIndex(limit: Int, offset: Int, completionHandler: CompletionHandlerCharacters){
-        
+    
+    init(baseUrl: String, privateKey: String, publicKey: String){
+        self.baseUrl = baseUrl
+        self.privateKey = privateKey
+        self.publicKey = publicKey
+    }
+    
+    func  getCharachterIndex(limit: Int, offset: Int, completionHandler: CompletionHandlerCharacters){
         var params = getDeafultParams()
         params[MarvelRequest.limitKey] = limit
         params[MarvelRequest.offsetKey] = offset
 
-        if let url = NSURL(string:MarvelRequest.baseUrl+"characters")?.URLByAppendingQueryParams(params){
+        if let url = NSURL(string:baseUrl+"characters")?.URLByAppendingQueryParams(params){
             let request =  NSURLRequest(URL: url)
             ApiRepository().getMultipleObjects(request, mapperType: CharacterMapper.self, completionHandler: completionHandler)
         }
         
     }
     
-    static func  getCharachterSearch(text: String, limit: Int, offset: Int, completionHandler: CompletionHandlerCharacters){
+    func  getCharachterSearch(text: String, limit: Int, offset: Int, completionHandler: CompletionHandlerCharacters){
         var params = getDeafultParams()
         params[MarvelRequest.limitKey] = limit
         params[MarvelRequest.offsetKey] = offset
         params[MarvelRequest.nameStartsWithKey] = text
         
-        if let url = NSURL(string:MarvelRequest.baseUrl+"characters")?.URLByAppendingQueryParams(params){
+        if let url = NSURL(string:baseUrl+"characters")?.URLByAppendingQueryParams(params){
             let request =  NSURLRequest(URL: url)
             ApiRepository().getMultipleObjects(request, mapperType: CharacterMapper.self, completionHandler: completionHandler)
         }
         
     }
 
-    static func  getComic(url: NSURL, completionHandler: CompletionHandlerComics){
+    func  getComic(url: NSURL, completionHandler: CompletionHandlerComics){
         let request =  NSURLRequest(URL: url.URLByAppendingQueryParams(getDeafultParams()))
         ApiRepository().getMultipleObjects(request, mapperType: ComicMapper.self, completionHandler: completionHandler)        
     }
@@ -75,14 +78,60 @@ class MarvelRequest{
         
     }
     
-    private static func getDeafultParams() -> [String: AnyObject]{
+    private func getDeafultParams() -> [String: AnyObject]{
         let ts = Int(NSDate().timeIntervalSince1970)
-        let hash = "\(ts)\(MarvelRequest.privateKey)\(MarvelRequest.publicKey)".md5()
-        let params: [String: AnyObject] = [MarvelRequest.apiKey: MarvelRequest.publicKey, MarvelRequest.hashKey: hash, MarvelRequest.timestampKey:ts]
+        let hash = "\(ts)\(privateKey)\(publicKey)".md5()
+        let params: [String: AnyObject] = [MarvelRequest.apiKey: publicKey, MarvelRequest.hashKey: hash, MarvelRequest.timestampKey:ts]
         return params
     }
     
-
+    private func getMultipleObjects<T>(request: NSURLRequest, mapperType: BaseMapper<T>.Type, completionHandler: (ok:Bool, objects:[T]?, error:NSError?) -> Void) {
+        NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            
+            var objects: [T]?
+            var ok = false
+            
+            if let dictionary = data?.toDictionary(){
+                if let dataDict = mapperType.getRoot(dictionary) as? NSArray {
+                    objects = mapperType.createArrayFrom(dataDict)
+                    ok = (objects != nil)
+                }
+            }
+            
+            completionHandler(ok: ok, objects: objects, error: error)
+            }.resume()
+    }
     
+    private func downloadImage(url: NSURL?, storageFilePaths: String, saveLocally: Bool = true, completionHandler: (image:UIImage?) -> Void){
+        if(url != nil){
+            let request = NSURLRequest(URL: url!)
+            
+            var image: UIImage?
+            
+            NSURLSession.sharedSession().downloadTaskWithRequest(request, completionHandler: {
+                (url: NSURL?, response: NSURLResponse?, error: NSError?) -> Void in
+                var data: NSData? = nil
+                if error == nil && url != nil {
+                    data = NSData(contentsOfURL: url!)
+                    if (data != nil) {
+                        if (saveLocally) {
+                            //save user photo in the storage
+                            Utilities.fileStorage.saveFile(data!, path: storageFilePaths)
+                        }
+                        //create image
+                        image = UIImage(data: data!)
+                        
+                    }
+                }
+                completionHandler(image: image)
+                
+                
+                
+            }).resume()
+            
+            
+        }
+    }
     
 }
