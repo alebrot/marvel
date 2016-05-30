@@ -115,8 +115,8 @@ public extension UIStoryboard {
         
     }
     
-    internal class func viewController() -> ViewController {
-        let vc = mainStoryboard().instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+    internal class func viewController() -> SplashViewController {
+        let vc = mainStoryboard().instantiateViewControllerWithIdentifier("SplashViewController") as! SplashViewController
         return vc
     }    
     

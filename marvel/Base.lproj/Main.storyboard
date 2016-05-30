@@ -167,10 +167,10 @@
             </objects>
             <point key="canvasLocation" x="3043" y="-41"/>
         </scene>
-        <!--View Controller-->
+        <!--Splash View Controller-->
         <scene sceneID="pEY-bR-7pG">
             <objects>
-                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZQQ-Ww-p8D" customClass="ViewController" customModule="marvel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplashViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZQQ-Ww-p8D" customClass="SplashViewController" customModule="marvel" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xOy-ev-Sku"/>
                         <viewControllerLayoutGuide type="bottom" id="5ek-d7-Hvn"/>

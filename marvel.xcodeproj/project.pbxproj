@@ -21,7 +21,7 @@
 		421929981CF5FA9100B10198 /* Json.plist in Resources */ = {isa = PBXBuildFile; fileRef = 421929971CF5FA9100B10198 /* Json.plist */; };
 		4219299A1CF6E2DB00B10198 /* BaseMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421929991CF6E2DB00B10198 /* BaseMapperTests.swift */; };
 		4245C9FC1CD9EA9F007F3033 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245C9FB1CD9EA9F007F3033 /* AppDelegate.swift */; };
-		4245C9FE1CD9EA9F007F3033 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245C9FD1CD9EA9F007F3033 /* ViewController.swift */; };
+		4245C9FE1CD9EA9F007F3033 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245C9FD1CD9EA9F007F3033 /* SplashViewController.swift */; };
 		4245CA011CD9EA9F007F3033 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4245C9FF1CD9EA9F007F3033 /* Main.storyboard */; };
 		4245CA031CD9EA9F007F3033 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4245CA021CD9EA9F007F3033 /* Assets.xcassets */; };
 		4245CA061CD9EA9F007F3033 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4245CA041CD9EA9F007F3033 /* LaunchScreen.storyboard */; };
@@ -76,7 +76,7 @@
 		421929991CF6E2DB00B10198 /* BaseMapperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMapperTests.swift; sourceTree = "<group>"; };
 		4245C9F81CD9EA9E007F3033 /* marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4245C9FB1CD9EA9F007F3033 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4245C9FD1CD9EA9F007F3033 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4245C9FD1CD9EA9F007F3033 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		4245CA001CD9EA9F007F3033 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4245CA021CD9EA9F007F3033 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4245CA051CD9EA9F007F3033 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -243,25 +243,25 @@
 		4279281B1CE21E8700C43885 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4279281C1CE21E9700C43885 /* Parent */,
+				4279281C1CE21E9700C43885 /* Base */,
 				42114CF91CE34D9800358586 /* Reusable */,
 				42114CF71CE3385500358586 /* CharactersSearchResultsController.swift */,
 				42114CFA1CE34DBF00358586 /* CharactersIndexViewController.swift */,
 				42114D081CE5C7B300358586 /* CollectionContainer.swift */,
 				42114D0A1CE5E46F00358586 /* DetailsTableViewController.swift */,
-				4245C9FD1CD9EA9F007F3033 /* ViewController.swift */,
+				4245C9FD1CD9EA9F007F3033 /* SplashViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		4279281C1CE21E9700C43885 /* Parent */ = {
+		4279281C1CE21E9700C43885 /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				4245CA431CDC8845007F3033 /* ReusableTableViewController.swift */,
 				427928171CE21E2900C43885 /* ImageReusableTableViewController.swift */,
 				42114CF51CE3377800358586 /* BaseContainerViewController.swift */,
 			);
-			name = Parent;
+			name = Base;
 			sourceTree = "<group>";
 		};
 		42840B8F1CF346EF00C295AA /* Cells */ = {
@@ -413,7 +413,7 @@
 			files = (
 				42840B8E1CF346E600C295AA /* CharacterCell.swift in Sources */,
 				427928181CE21E2900C43885 /* ImageReusableTableViewController.swift in Sources */,
-				4245C9FE1CD9EA9F007F3033 /* ViewController.swift in Sources */,
+				4245C9FE1CD9EA9F007F3033 /* SplashViewController.swift in Sources */,
 				42114CF61CE3377800358586 /* BaseContainerViewController.swift in Sources */,
 				42114D091CE5C7B300358586 /* CollectionContainer.swift in Sources */,
 				4245C9FC1CD9EA9F007F3033 /* AppDelegate.swift in Sources */,
