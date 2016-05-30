@@ -13,7 +13,6 @@ class Character: NSObject {
     
     private static let hashPrefix = "Character"
     
-    
     var id: Int
     var name: String
     var desc: String
@@ -35,6 +34,11 @@ class Character: NSObject {
         self.thumbnailURI = thumbnailURI
         self.comics = comics
     }
+    
+    override var description: String{
+        return self.name
+    }
+
 }
 
 class CharacterMapper: BaseMapper<Character>{
