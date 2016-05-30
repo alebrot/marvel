@@ -10,15 +10,13 @@ import Foundation
 
 
 struct Config {
+    
     struct Keys{
         static let marvelPublic = CommonUtilities.getStringFromMainBundle("MarvelPublicKey")!
         static let marvelPrivate = CommonUtilities.getStringFromMainBundle("MarvelPrivateKey")!
     }
     
     static let baseUrl = CommonUtilities.getStringFromMainBundle("BaseUrl")!
-    
-    
-    
     
     struct TableView {
         
@@ -31,8 +29,6 @@ struct Config {
         
     }
 
-    
-    
     struct StorageFilePaths {
         
         private static let characterThumbnailBasePath = StorageFilePaths.fileWithBasePath("characterThumbnails")
